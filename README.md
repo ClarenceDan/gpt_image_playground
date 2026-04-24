@@ -7,9 +7,17 @@ https://cooksleep.github.io/gpt_image_playground/
 
 ## 示例截图
 
-| 主界面 | 任务详情 | 移动端 |
-|:---:|:---:|:---:|
-| ![主界面](docs/images/example_1.png) | ![任务详情](docs/images/example_2.png) | ![移动端](docs/images/example_3.png) |
+### 主界面
+
+<img src="docs/images/example_1.png" alt="主界面" width="100%" />
+
+### 任务详情
+
+<img src="docs/images/example_2.png" alt="任务详情" width="100%" />
+
+### 移动端
+
+<img src="docs/images/example_3.png" alt="移动端" width="420" />
 
 ## 功能特性
 
