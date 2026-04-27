@@ -8,6 +8,7 @@ export interface AppSettings {
   model: string
   timeout: number
   apiMode: ApiMode
+  codexCli: boolean
 }
 
 const DEFAULT_BASE_URL = import.meta.env.VITE_DEFAULT_API_URL?.trim() || 'https://api.openai.com/v1'
@@ -20,6 +21,7 @@ export const DEFAULT_SETTINGS: AppSettings = {
   model: DEFAULT_IMAGES_MODEL,
   timeout: 300,
   apiMode: 'images',
+  codexCli: false,
 }
 
 // ===== 任务参数 =====
