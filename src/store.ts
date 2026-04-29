@@ -465,17 +465,6 @@ async function executeTask(taskId: string) {
       if (imgId && revisedPrompt && revisedPrompt.trim()) acc[imgId] = revisedPrompt
       return acc
     }, {})
-    const promptWasRevised = result.revisedPrompts?.some(
-      (revisedPrompt) => revisedPrompt?.trim() && revisedPrompt.trim() !== task.prompt.trim(),
-    )
-    const hasRevisedPromptValue = result.revisedPrompts?.some((revisedPrompt) => revisedPrompt?.trim())
-    if (!settings.codexCli) {
-      if (promptWasRevised) {
-        showCodexCliPrompt()
-      } else if (!hasRevisedPromptValue) {
-        showCodexCliPrompt(false, '接口没有返回官方 API 会返回的部分信息')
-      }
-    }
 
     // 更新任务
     updateTaskInStore(taskId, {
