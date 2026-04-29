@@ -74,6 +74,22 @@ export default function App() {
       <Header />
       <main data-home-main data-drag-select-surface className="pb-48">
         <div className="safe-area-x max-w-7xl mx-auto">
+          <div className="flex justify-end pt-4">
+            <div className="hidden md:block max-w-[260px] rounded-xl border border-emerald-200/60 bg-emerald-50/50 p-3 dark:border-emerald-500/20 dark:bg-emerald-500/10 shadow-sm">
+              <p className="text-xs text-emerald-700 dark:text-emerald-300 leading-relaxed">
+                还没有 API Key？推荐{' '}
+                <a
+                  href="https://home.moleapi.com/register?aff=yOYc"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold underline hover:text-emerald-800 dark:hover:text-emerald-200"
+                >
+                  MoleAPI
+                </a>
+                ：新用户注册即送 $0.5，通过邀请链接注册额外再送 $0.5。目前 $1.0 可生成约 50 次图片，邀请好友还可叠加 $0.5 邀请赠金，上不封顶！
+              </p>
+            </div>
+          </div>
           <SearchBar />
           <TaskGrid />
         </div>
