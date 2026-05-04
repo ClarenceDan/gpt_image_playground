@@ -2,6 +2,7 @@ import { useEffect, useState, useRef, useCallback } from 'react'
 import { useStore, getCachedImage, ensureImageCached } from '../store'
 import { useCloseOnEscape } from '../hooks/useCloseOnEscape'
 import { createMaskPreviewDataUrl } from '../lib/canvasImage'
+import { downloadImage } from '../lib/download'
 
 const MIN_SCALE = 1
 const MAX_SCALE = 10
@@ -14,6 +15,7 @@ export default function Lightbox() {
   const lightboxImageId = useStore((s) => s.lightboxImageId)
   const lightboxImageList = useStore((s) => s.lightboxImageList)
   const setLightboxImageId = useStore((s) => s.setLightboxImageId)
+  const showToast = useStore((s) => s.showToast)
   const maskDraft = useStore((s) => s.maskDraft)
   const tasks = useStore((s) => s.tasks)
 
@@ -101,6 +103,16 @@ export default function Lightbox() {
 
   const goPrev = useCallback(() => { if (showNav) goTo(currentIndex - 1) }, [showNav, currentIndex, goTo])
   const goNext = useCallback(() => { if (showNav) goTo(currentIndex + 1) }, [showNav, currentIndex, goTo])
+  const handleDownload = useCallback(async () => {
+    if (!src) return
+    try {
+      await downloadImage(src)
+      showToast('开始保存图片', 'success')
+    } catch (err) {
+      console.error(err)
+      showToast('保存图片失败', 'error')
+    }
+  }, [showToast, src])
 
   // 键盘左右切换
   useEffect(() => {
@@ -125,6 +137,7 @@ export default function Lightbox() {
       total={total}
       onPrev={goPrev}
       onNext={goNext}
+      onDownload={handleDownload}
     />
   )
 }
@@ -138,10 +151,11 @@ interface LightboxInnerProps {
   total: number
   onPrev: () => void
   onNext: () => void
+  onDownload: () => void
 }
 
 /** 内部组件：保证挂载时 DOM 已经存在，所有 ref / effect 都可靠 */
-function LightboxInner({ src, maskPreviewSrc, onClose, showNav, currentIndex, total, onPrev, onNext }: LightboxInnerProps) {
+function LightboxInner({ src, maskPreviewSrc, onClose, showNav, currentIndex, total, onPrev, onNext, onDownload }: LightboxInnerProps) {
   const containerRef = useRef<HTMLDivElement>(null)
 
   // 用 ref 追踪最新变换，避免闭包过期
@@ -496,6 +510,21 @@ function LightboxInner({ src, maskPreviewSrc, onClose, showNav, currentIndex, to
           </button>
         </>
       )}
+
+      <button
+        type="button"
+        onClick={(e) => {
+          e.stopPropagation()
+          onDownload()
+        }}
+        className="absolute right-4 top-4 z-20 flex h-9 w-9 items-center justify-center rounded-full bg-black/45 text-white shadow-lg backdrop-blur-sm transition hover:bg-black/65 sm:right-6 sm:top-6"
+        aria-label="保存图片"
+        title="保存图片"
+      >
+        <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+        </svg>
+      </button>
 
       {/* 底部指示器 */}
       {showZoomBadge && isZoomed && zoomPercent !== 100 && (

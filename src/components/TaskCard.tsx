@@ -3,6 +3,7 @@ import type { TaskRecord } from '../types'
 import { useStore, getCachedImage, ensureImageCached, updateTaskInStore, retryTask } from '../store'
 import { formatImageRatio } from '../lib/size'
 import { ParamValue } from '../lib/paramDisplay'
+import { downloadImage } from '../lib/download'
 
 interface Props {
   task: TaskRecord
@@ -30,6 +31,7 @@ export default function TaskCard({
   const [swipeStartedSelected, setSwipeStartedSelected] = useState(false)
   const [swipeActionActive, setSwipeActionActive] = useState(false)
   const toggleTaskSelection = useStore((s) => s.toggleTaskSelection)
+  const showToast = useStore((s) => s.showToast)
   const touchStartRef = useRef<{ x: number; y: number } | null>(null)
   const swipeResetTimerRef = useRef<number | null>(null)
   const suppressClickUntilRef = useRef(0)
@@ -103,10 +105,11 @@ export default function TaskCard({
 
   // 定时更新运行中任务的计时
   useEffect(() => {
-    if (task.status !== 'running') return
+    if (task.status !== 'running' && !(task.status === 'error' && task.falRecoverable)) return
     const id = setInterval(() => setNow(Date.now()), 1000)
+    setNow(Date.now())
     return () => clearInterval(id)
-  }, [task.status])
+  }, [task.falRecoverable, task.status])
 
   // 加载缩略图
   useEffect(() => {
@@ -149,7 +152,7 @@ export default function TaskCard({
 
   const duration = (() => {
     let seconds: number
-    if (task.status === 'running') {
+    if (task.status === 'running' || task.falRecoverable) {
       seconds = Math.floor((now - task.createdAt) / 1000)
     } else if (task.elapsed != null) {
       seconds = Math.floor(task.elapsed / 1000)
@@ -165,11 +168,24 @@ export default function TaskCard({
     : task.actualParams
   const isSwipeReady = Math.abs(swipeOffset) >= 40
   const showSwipeAction = isSwipeReady || swipeActionActive
+  const isFalReconnecting = task.status === 'error' && task.falRecoverable
+  const showRunningTimer = task.status === 'running' || isFalReconnecting
   const swipeBgClass = showSwipeAction
     ? swipeStartedSelected
       ? 'bg-gray-500 dark:bg-gray-600'
       : 'bg-blue-500'
     : 'bg-gray-200 dark:bg-gray-700'
+
+  const handleSaveCover = async () => {
+    if (!thumbSrc) return
+    try {
+      await downloadImage(thumbSrc)
+      showToast('开始保存图片', 'success')
+    } catch (err) {
+      console.error(err)
+      showToast('保存图片失败', 'error')
+    }
+  }
 
   return (
     <div className="relative rounded-xl">
@@ -251,7 +267,27 @@ export default function TaskCard({
               <span className="text-xs text-gray-400 dark:text-gray-500">生成中...</span>
             </div>
           )}
-          {task.status === 'error' && (
+          {task.status === 'error' && isFalReconnecting && (
+            <div className="flex flex-col items-center gap-1 px-2">
+              <svg
+                className="w-7 h-7 text-yellow-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                />
+              </svg>
+              <span className="text-xs text-yellow-500 text-center leading-tight">
+                重连中
+              </span>
+            </div>
+          )}
+          {task.status === 'error' && !isFalReconnecting && (
             <div className="flex flex-col items-center gap-1 px-2">
               <svg
                 className="w-7 h-7 text-red-400"
@@ -303,7 +339,7 @@ export default function TaskCard({
           )}
           {/* 运行中显示耗时，完成后显示封面图比例与分辨率标签 */}
           <div className="absolute top-1.5 left-1.5 flex items-center gap-1">
-            {task.status !== 'done' || !coverRatio || !coverSize ? (
+            {showRunningTimer || task.status !== 'done' || !coverRatio || !coverSize ? (
               <span className="flex items-center gap-1 bg-black/50 text-white text-[10px] sm:text-xs px-1.5 py-0.5 rounded backdrop-blur-sm font-mono">
                 <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -348,7 +384,7 @@ export default function TaskCard({
               className="flex gap-1 justify-end flex-shrink-0"
               onClick={(e) => e.stopPropagation()}
             >
-              {task.status === 'error' && (
+              {task.status === 'error' && !isFalReconnecting && (
                 <button
                   onClick={() => retryTask(task)}
                   className="p-1.5 rounded-md hover:bg-blue-50 dark:hover:bg-blue-950/30 text-gray-400 hover:text-blue-500 transition"
@@ -359,6 +395,17 @@ export default function TaskCard({
                   </svg>
                 </button>
               )}
+              <button
+                onClick={handleSaveCover}
+                className="p-1.5 rounded-md hover:bg-gray-100 dark:hover:bg-white/[0.06] text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition disabled:opacity-30"
+                title="保存图片"
+                aria-label="保存图片"
+                disabled={!thumbSrc || task.status !== 'done'}
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+              </button>
               <button
                 onClick={() =>
                   updateTaskInStore(task.id, { isFavorite: !task.isFavorite })
