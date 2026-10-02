@@ -1,6 +1,7 @@
 import { DEFAULT_PARAMS, type AppSettings, type TaskParams } from '../types'
-import { getActiveApiProfile } from './apiProfiles'
-import { normalizeImageSize } from './size'
+import { getActiveApiProfile, isOpenAICompatibleProvider } from './apiProfiles'
+import { getImageGenerationModel, isGptImage25Model } from './imageModels'
+import { normalizeCodexCliImageSize, normalizeImageSize } from './size'
 
 export const DEFAULT_FAL_IMAGE_SIZE = '1360x1024'
 export const MAX_FAL_OUTPUT_IMAGES = 4
@@ -10,7 +11,11 @@ export function getOutputImageLimitForSettings(settings: AppSettings) {
   return getActiveApiProfile(settings).provider === 'fal' ? MAX_FAL_OUTPUT_IMAGES : MAX_OPENAI_OUTPUT_IMAGES
 }
 
-export function normalizeParamsForSettings(params: TaskParams, settings: AppSettings): TaskParams {
+export function normalizeParamsForSettings(
+  params: TaskParams,
+  settings: AppSettings,
+  options: { hasInputImages?: boolean } = {},
+): TaskParams {
   const activeProfile = getActiveApiProfile(settings)
   const outputImageLimit = getOutputImageLimitForSettings(settings)
   const nextParams: TaskParams = {
@@ -19,15 +24,20 @@ export function normalizeParamsForSettings(params: TaskParams, settings: AppSett
     n: Math.min(outputImageLimit, Math.max(1, params.n || DEFAULT_PARAMS.n)),
   }
 
-  if (activeProfile.provider === 'openai' && activeProfile.codexCli) {
+  if (isOpenAICompatibleProvider(settings, activeProfile.provider) && activeProfile.codexCli) {
+    nextParams.size = normalizeCodexCliImageSize(nextParams.size)
     nextParams.quality = DEFAULT_PARAMS.quality
   }
 
   if (activeProfile.provider === 'fal') {
-    if (nextParams.size === 'auto') nextParams.size = DEFAULT_FAL_IMAGE_SIZE
+    if (!options.hasInputImages && nextParams.size === 'auto') nextParams.size = DEFAULT_FAL_IMAGE_SIZE
     if (nextParams.quality === 'auto') nextParams.quality = 'high'
     nextParams.moderation = DEFAULT_PARAMS.moderation
     nextParams.output_compression = DEFAULT_PARAMS.output_compression
+  }
+
+  if ((nextParams.quality === 'xhigh' || nextParams.quality === 'max') && !isGptImage25Model(getImageGenerationModel(activeProfile))) {
+    nextParams.quality = 'high'
   }
 
   if (nextParams.output_format === 'png') {

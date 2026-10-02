@@ -1,11 +1,23 @@
 import { useEffect, useState, useRef, useCallback } from 'react'
-import { useStore, getCachedImage, ensureImageCached } from '../store'
+import { createInputImageFromFile, deleteImageIfUnreferenced, useStore } from '../store'
 import { useCloseOnEscape } from '../hooks/useCloseOnEscape'
+import { useHintTooltip } from '../hooks/useHintTooltip'
+import { usePreventBackgroundScroll } from '../hooks/usePreventBackgroundScroll'
 import { createMaskPreviewDataUrl } from '../lib/canvasImage'
-import { downloadImage } from '../lib/download'
+import { suppressGlobalClicks } from '../lib/clickSuppression'
+import { ensureImageCached, getCachedImage } from '../lib/imageCache'
+import { downloadImageIds } from '../lib/downloadImages'
+import ButtonTooltip from './input/buttonTooltip'
+import { DownloadIcon, EditIcon, RefreshIcon } from './icons'
 
 const MIN_SCALE = 1
 const MAX_SCALE = 10
+const SWIPE_INTENT_THRESHOLD = 10
+const SWIPE_ACTION_THRESHOLD = 40
+const DOUBLE_TAP_DELAY = 350
+const DOUBLE_TAP_DISTANCE = 40
+
+type TouchIntent = 'none' | 'horizontal-swipe' | 'vertical-move' | 'zoom-pan' | 'pinch'
 
 function clamp(v: number, min: number, max: number) {
   return Math.max(min, Math.min(max, v))
@@ -15,9 +27,14 @@ export default function Lightbox() {
   const lightboxImageId = useStore((s) => s.lightboxImageId)
   const lightboxImageList = useStore((s) => s.lightboxImageList)
   const setLightboxImageId = useStore((s) => s.setLightboxImageId)
-  const showToast = useStore((s) => s.showToast)
   const maskDraft = useStore((s) => s.maskDraft)
   const tasks = useStore((s) => s.tasks)
+  const inputImages = useStore((s) => s.inputImages)
+  const replaceInputImage = useStore((s) => s.replaceInputImage)
+  const setMaskEditorImageId = useStore((s) => s.setMaskEditorImageId)
+  const showToast = useStore((s) => s.showToast)
+  const replaceFileInputRef = useRef<HTMLInputElement>(null)
+  const replaceImageTargetRef = useRef<string | null>(null)
 
   const [src, setSrc] = useState('')
   const [maskImageSrc, setMaskImageSrc] = useState('')
@@ -25,25 +42,38 @@ export default function Lightbox() {
 
   const close = useCallback(() => setLightboxImageId(null), [setLightboxImageId])
   useCloseOnEscape(Boolean(lightboxImageId), close)
+  usePreventBackgroundScroll(Boolean(lightboxImageId))
 
   // 图片加载
   useEffect(() => {
+    let cancelled = false
+
     if (!lightboxImageId) {
       setSrc('')
       return
     }
-    const cached = getCachedImage(lightboxImageId)
+
+    setSrc('')
+
+    const imageId = lightboxImageId
+    const cached = getCachedImage(imageId)
     if (cached) {
       setSrc(cached)
     } else {
-      ensureImageCached(lightboxImageId).then((url) => {
-        if (url) setSrc(url)
+      ensureImageCached(imageId).then((url) => {
+        if (!cancelled && url) setSrc(url)
       })
+    }
+
+    return () => {
+      cancelled = true
     }
   }, [lightboxImageId])
 
   // 遮罩图加载
   useEffect(() => {
+    let cancelled = false
+
     if (!lightboxImageId) {
       setMaskImageSrc('')
       return
@@ -54,18 +84,25 @@ export default function Lightbox() {
       return
     }
 
+    setMaskImageSrc('')
+
     const taskWithMask = tasks.find((t) => t.maskTargetImageId === lightboxImageId && t.maskImageId)
     if (taskWithMask?.maskImageId) {
-      const cached = getCachedImage(taskWithMask.maskImageId)
+      const maskImageId = taskWithMask.maskImageId
+      const cached = getCachedImage(maskImageId)
       if (cached) {
         setMaskImageSrc(cached)
       } else {
-        ensureImageCached(taskWithMask.maskImageId).then((url) => {
-          if (url) setMaskImageSrc(url)
+        ensureImageCached(maskImageId).then((url) => {
+          if (!cancelled && url) setMaskImageSrc(url)
         })
       }
     } else {
       setMaskImageSrc('')
+    }
+
+    return () => {
+      cancelled = true
     }
   }, [lightboxImageId, maskDraft?.targetImageId, maskDraft?.maskDataUrl, tasks])
 
@@ -103,16 +140,73 @@ export default function Lightbox() {
 
   const goPrev = useCallback(() => { if (showNav) goTo(currentIndex - 1) }, [showNav, currentIndex, goTo])
   const goNext = useCallback(() => { if (showNav) goTo(currentIndex + 1) }, [showNav, currentIndex, goTo])
-  const handleDownload = useCallback(async () => {
-    if (!src) return
+
+  const isInputImage = Boolean(lightboxImageId && inputImages.some((image) => image.id === lightboxImageId))
+
+  const openReplaceFilePicker = useCallback(() => {
+    if (!lightboxImageId || !isInputImage) return
+    replaceImageTargetRef.current = lightboxImageId
+    replaceFileInputRef.current?.click()
+  }, [isInputImage, lightboxImageId])
+
+  const handleReplaceFileUpload = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    e.target.value = ''
+    const targetId = replaceImageTargetRef.current
+    replaceImageTargetRef.current = null
+    if (!file || !targetId) return
+
     try {
-      await downloadImage(src)
-      showToast('开始保存图片', 'success')
+      const image = await createInputImageFromFile(file)
+      if (!image) {
+        showToast('请选择有效图片', 'error')
+        return
+      }
+
+      const currentImages = useStore.getState().inputImages
+      const targetIdx = currentImages.findIndex((item) => item.id === targetId)
+      if (targetIdx < 0) {
+        void deleteImageIfUnreferenced(image.id)
+        showToast('原参考图已不存在', 'error')
+        return
+      }
+      if (targetId === image.id) {
+        showToast('参考图未变化', 'info')
+        return
+      }
+      if (currentImages.some((item, idx) => idx !== targetIdx && item.id === image.id)) {
+        showToast('这张图片已在参考图中', 'info')
+        return
+      }
+
+      replaceInputImage(targetIdx, image)
+      const nextList = lightboxImageList.map((id) => id === targetId ? image.id : id)
+      setLightboxImageId(image.id, nextList)
+      showToast('参考图已替换', 'success')
+    } catch (err) {
+      showToast(`参考图替换失败：${err instanceof Error ? err.message : String(err)}`, 'error')
+    }
+  }, [lightboxImageList, replaceInputImage, setLightboxImageId, showToast])
+
+  const editInputImage = useCallback(() => {
+    if (!lightboxImageId || !isInputImage) return
+    const imageId = lightboxImageId
+    close()
+    setMaskEditorImageId(imageId)
+  }, [close, isInputImage, lightboxImageId, setMaskEditorImageId])
+
+  const downloadCurrentImage = useCallback(async () => {
+    if (!lightboxImageId) return
+    const matchedTask = useStore.getState().tasks.find((t) => t.outputImages?.includes(lightboxImageId))
+    const fileNameBase = matchedTask ? `task-${matchedTask.id}` : `image-${lightboxImageId}`
+    try {
+      const result = await downloadImageIds([lightboxImageId], fileNameBase)
+      showToast(result.successCount > 0 ? '下载成功' : '下载失败', result.successCount > 0 ? 'success' : 'error')
     } catch (err) {
       console.error(err)
-      showToast('保存图片失败', 'error')
+      showToast('下载失败', 'error')
     }
-  }, [showToast, src])
+  }, [lightboxImageId, showToast])
 
   // 键盘左右切换
   useEffect(() => {
@@ -128,22 +222,37 @@ export default function Lightbox() {
   if (!lightboxImageId || !src) return null
 
   return (
-    <LightboxInner
-      src={src}
-      maskPreviewSrc={maskPreviewSrc}
-      onClose={close}
-      showNav={showNav}
-      currentIndex={currentIndex}
-      total={total}
-      onPrev={goPrev}
-      onNext={goNext}
-      onDownload={handleDownload}
-    />
+    <>
+      <LightboxInner
+        src={src}
+        imageId={lightboxImageId}
+        maskPreviewSrc={maskPreviewSrc}
+        onClose={close}
+        showNav={showNav}
+        currentIndex={currentIndex}
+        total={total}
+        onPrev={goPrev}
+        onNext={goNext}
+        showInputActions={isInputImage}
+        editDisabled={Boolean(maskDraft && maskDraft.targetImageId !== lightboxImageId)}
+        onReplace={openReplaceFilePicker}
+        onEdit={editInputImage}
+        onDownload={downloadCurrentImage}
+      />
+      <input
+        ref={replaceFileInputRef}
+        type="file"
+        accept="image/*"
+        className="hidden"
+        onChange={handleReplaceFileUpload}
+      />
+    </>
   )
 }
 
 interface LightboxInnerProps {
   src: string
+  imageId: string
   maskPreviewSrc?: string
   onClose: () => void
   showNav: boolean
@@ -151,12 +260,18 @@ interface LightboxInnerProps {
   total: number
   onPrev: () => void
   onNext: () => void
+  showInputActions: boolean
+  editDisabled: boolean
+  onReplace: () => void
+  onEdit: () => void
   onDownload: () => void
 }
 
 /** 内部组件：保证挂载时 DOM 已经存在，所有 ref / effect 都可靠 */
-function LightboxInner({ src, maskPreviewSrc, onClose, showNav, currentIndex, total, onPrev, onNext, onDownload }: LightboxInnerProps) {
+function LightboxInner({ src, imageId, maskPreviewSrc, onClose, showNav, currentIndex, total, onPrev, onNext, showInputActions, editDisabled, onReplace, onEdit, onDownload }: LightboxInnerProps) {
   const containerRef = useRef<HTMLDivElement>(null)
+  const openedAtRef = useRef(Date.now())
+  const editHint = useHintTooltip({ enabled: () => editDisabled })
 
   // 用 ref 追踪最新变换，避免闭包过期
   const scaleRef = useRef(1)
@@ -194,13 +309,22 @@ function LightboxInner({ src, maskPreviewSrc, onClose, showNav, currentIndex, to
   const tapRef = useRef({ time: 0, x: 0, y: 0 })
   const hadMultiTouchRef = useRef(false)
   const touchStartedOnImageRef = useRef(false)
+  const touchStartedOnControlRef = useRef(false)
+  const touchStartRef = useRef<{ x: number; y: number; time: number } | null>(null)
+  const touchIntentRef = useRef<TouchIntent>('none')
+  const touchMovedRef = useRef(false)
+  const swipeHandledRef = useRef(false)
+  const doubleTapHandledRef = useRef(false)
+  const closeTapTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   // 判断本次 mousedown → mouseup 是否发生了拖拽，用于区分点击和拖拽
   const didDragRef = useRef(false)
   const suppressNextClickRef = useRef(false)
+  const suppressClickTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   // 切换图片时重置缩放
   useEffect(() => {
+    openedAtRef.current = Date.now()
     scaleRef.current = 1
     txRef.current = 0
     tyRef.current = 0
@@ -220,6 +344,30 @@ function LightboxInner({ src, maskPreviewSrc, onClose, showNav, currentIndex, to
     const rect = containerRef.current?.getBoundingClientRect()
     if (!rect) return { cx: 0, cy: 0 }
     return { cx: rect.left + rect.width / 2, cy: rect.top + rect.height / 2 }
+  }, [])
+
+  const cancelCloseTap = useCallback(() => {
+    if (closeTapTimerRef.current) {
+      clearTimeout(closeTapTimerRef.current)
+      closeTapTimerRef.current = null
+    }
+  }, [])
+
+  const suppressNextClickBriefly = useCallback(() => {
+    suppressNextClickRef.current = true
+    if (suppressClickTimerRef.current) clearTimeout(suppressClickTimerRef.current)
+    suppressClickTimerRef.current = setTimeout(() => {
+      suppressNextClickRef.current = false
+      suppressClickTimerRef.current = null
+    }, 350)
+  }, [])
+
+  const resetTouchGesture = useCallback(() => {
+    touchStartRef.current = null
+    touchIntentRef.current = 'none'
+    touchMovedRef.current = false
+    swipeHandledRef.current = false
+    touchStartedOnControlRef.current = false
   }, [])
 
   const apply = useCallback((s: number, tx: number, ty: number) => {
@@ -322,6 +470,7 @@ function LightboxInner({ src, maskPreviewSrc, onClose, showNav, currentIndex, to
   // ====== 鼠标双击缩放 ======
   const onDoubleClick = useCallback((e: React.MouseEvent) => {
     e.stopPropagation()
+    if (Date.now() - openedAtRef.current < DOUBLE_TAP_DELAY) return
     if (scaleRef.current > 1) {
       apply(1, 0, 0)
     } else {
@@ -340,7 +489,10 @@ function LightboxInner({ src, maskPreviewSrc, onClose, showNav, currentIndex, to
     const onTouchStart = (e: TouchEvent) => {
       if (e.touches.length === 2) {
         e.preventDefault()
+        cancelCloseTap()
+        resetTouchGesture()
         hadMultiTouchRef.current = true
+        touchIntentRef.current = 'pinch'
         tapRef.current = { time: 0, x: 0, y: 0 }
         const [a, b] = [e.touches[0], e.touches[1]]
         const dist = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY)
@@ -360,14 +512,23 @@ function LightboxInner({ src, maskPreviewSrc, onClose, showNav, currentIndex, to
         const now = Date.now()
         const prev = tapRef.current
         touchStartedOnImageRef.current = e.target instanceof HTMLImageElement
+        touchStartedOnControlRef.current = e.target instanceof Element && Boolean(e.target.closest('button'))
+        touchStartRef.current = { x: t.clientX, y: t.clientY, time: now }
+        touchIntentRef.current = 'none'
+        touchMovedRef.current = false
+        swipeHandledRef.current = false
 
         // 双击检测
         if (
-          now - prev.time < 300 &&
-          Math.abs(t.clientX - prev.x) < 30 &&
-          Math.abs(t.clientY - prev.y) < 30
+          touchStartedOnImageRef.current &&
+          now - prev.time < DOUBLE_TAP_DELAY &&
+          Math.abs(t.clientX - prev.x) < DOUBLE_TAP_DISTANCE &&
+          Math.abs(t.clientY - prev.y) < DOUBLE_TAP_DISTANCE
         ) {
           e.preventDefault()
+          cancelCloseTap()
+          suppressNextClickBriefly()
+          doubleTapHandledRef.current = true
           if (scaleRef.current > 1) {
             apply(1, 0, 0)
           } else {
@@ -377,6 +538,7 @@ function LightboxInner({ src, maskPreviewSrc, onClose, showNav, currentIndex, to
             apply(3, -mx * 2, -my * 2)
           }
           tapRef.current = { time: 0, x: 0, y: 0 }
+          resetTouchGesture()
           return
         }
         tapRef.current = { time: now, x: t.clientX, y: t.clientY }
@@ -407,7 +569,30 @@ function LightboxInner({ src, maskPreviewSrc, onClose, showNav, currentIndex, to
         e.preventDefault()
         const t = e.touches[0]
         const d = dragRef.current
-        apply(scaleRef.current, d.baseTx + t.clientX - d.startX, d.baseTy + t.clientY - d.startY)
+        const dx = t.clientX - d.startX
+        const dy = t.clientY - d.startY
+        if (Math.abs(dx) > SWIPE_INTENT_THRESHOLD || Math.abs(dy) > SWIPE_INTENT_THRESHOLD) {
+          touchMovedRef.current = true
+          touchIntentRef.current = 'zoom-pan'
+        }
+        apply(scaleRef.current, d.baseTx + dx, d.baseTy + dy)
+      } else if (scaleRef.current <= 1 && e.touches.length === 1 && touchStartRef.current) {
+        const t = e.touches[0]
+        const dx = t.clientX - touchStartRef.current.x
+        const dy = t.clientY - touchStartRef.current.y
+        const absX = Math.abs(dx)
+        const absY = Math.abs(dy)
+
+        if (absX > SWIPE_INTENT_THRESHOLD || absY > SWIPE_INTENT_THRESHOLD) {
+          touchMovedRef.current = true
+        }
+        if (touchIntentRef.current === 'none' && (absX > SWIPE_INTENT_THRESHOLD || absY > SWIPE_INTENT_THRESHOLD)) {
+          touchIntentRef.current = absX > absY ? 'horizontal-swipe' : 'vertical-move'
+          if (touchIntentRef.current === 'horizontal-swipe') cancelCloseTap()
+        }
+        if (touchIntentRef.current === 'horizontal-swipe') {
+          e.preventDefault()
+        }
       }
     }
 
@@ -418,31 +603,94 @@ function LightboxInner({ src, maskPreviewSrc, onClose, showNav, currentIndex, to
         if (hadMultiTouchRef.current) {
           hadMultiTouchRef.current = false
           tapRef.current = { time: 0, x: 0, y: 0 }
+          resetTouchGesture()
           return
         }
-        // 单击关闭：未缩放时任意位置关闭；缩放时仅点击图片外关闭。
-        if (scaleRef.current <= 1 || !touchStartedOnImageRef.current) {
-          const prev = tapRef.current
-          if (prev.time > 0 && Date.now() - prev.time < 300) {
-            setTimeout(() => {
-              if (tapRef.current.time === prev.time) {
-                onClose()
-              }
-            }, 310)
-          }
+
+        if (doubleTapHandledRef.current) {
+          doubleTapHandledRef.current = false
+          resetTouchGesture()
+          return
         }
+
+        const start = touchStartRef.current
+        const changed = e.changedTouches[0]
+        const dx = start && changed ? changed.clientX - start.x : 0
+        const intent = touchIntentRef.current
+        const moved = touchMovedRef.current
+
+        if (intent === 'horizontal-swipe' && scaleRef.current <= 1) {
+          cancelCloseTap()
+          suppressNextClickBriefly()
+          swipeHandledRef.current = Math.abs(dx) >= SWIPE_ACTION_THRESHOLD
+          tapRef.current = { time: 0, x: 0, y: 0 }
+          e.preventDefault()
+          if (swipeHandledRef.current) {
+            if (dx < 0 && showNav) onNext()
+            if (dx > 0 && showNav) onPrev()
+          }
+          resetTouchGesture()
+          return
+        }
+
+        if (moved || intent === 'vertical-move' || intent === 'zoom-pan') {
+          suppressNextClickBriefly()
+          tapRef.current = { time: 0, x: 0, y: 0 }
+          resetTouchGesture()
+          return
+        }
+
+        // 触摸设备会在 touchend 后补发 click，这里接管点按，避免首个点按关闭导致双击缩放失效。
+        suppressNextClickBriefly()
+
+        // 单击关闭：未缩放时图片也可点按关闭；图片上的关闭延迟到双击窗口后，避免破坏双击缩放。
+        if (touchStartedOnControlRef.current) {
+          resetTouchGesture()
+          return
+        }
+        if (scaleRef.current <= 1 && touchStartedOnImageRef.current) {
+          cancelCloseTap()
+          closeTapTimerRef.current = setTimeout(() => {
+            closeTapTimerRef.current = null
+            suppressGlobalClicks()
+            onClose()
+          }, DOUBLE_TAP_DELAY)
+        } else if (!touchStartedOnImageRef.current) {
+          cancelCloseTap()
+          suppressGlobalClicks()
+          if (e.cancelable) e.preventDefault()
+          onClose()
+        }
+        resetTouchGesture()
       }
+    }
+
+    const onTouchCancel = () => {
+      cancelCloseTap()
+      tapRef.current = { time: 0, x: 0, y: 0 }
+      hadMultiTouchRef.current = false
+      doubleTapHandledRef.current = false
+      pinchRef.current.active = false
+      dragRef.current.active = false
+      resetTouchGesture()
     }
 
     el.addEventListener('touchstart', onTouchStart, { passive: false })
     el.addEventListener('touchmove', onTouchMove, { passive: false })
     el.addEventListener('touchend', onTouchEnd)
+    el.addEventListener('touchcancel', onTouchCancel)
     return () => {
+      cancelCloseTap()
+      if (suppressClickTimerRef.current) {
+        clearTimeout(suppressClickTimerRef.current)
+        suppressClickTimerRef.current = null
+      }
       el.removeEventListener('touchstart', onTouchStart)
       el.removeEventListener('touchmove', onTouchMove)
       el.removeEventListener('touchend', onTouchEnd)
+      el.removeEventListener('touchcancel', onTouchCancel)
     }
-  }, [apply, getCenter, onClose])
+  }, [apply, cancelCloseTap, getCenter, onClose, onNext, onPrev, resetTouchGesture, showNav, suppressNextClickBriefly])
 
   const s = scaleRef.current
   const tx = txRef.current
@@ -452,7 +700,7 @@ function LightboxInner({ src, maskPreviewSrc, onClose, showNav, currentIndex, to
   const zoomPercent = Math.round(s * 100)
 
   const navBtnClass =
-    'absolute top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/40 text-white hover:bg-black/60 transition-all z-10 backdrop-blur-sm'
+    'absolute top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/80 text-gray-800 hover:bg-white dark:bg-black/40 dark:text-white dark:hover:bg-black/60 transition-all z-10 backdrop-blur-sm shadow-md border border-gray-200/50 dark:border-transparent'
 
   return (
     <div
@@ -463,7 +711,7 @@ function LightboxInner({ src, maskPreviewSrc, onClose, showNav, currentIndex, to
       onClick={onClick}
       onDoubleClick={onDoubleClick}
     >
-      <div className="absolute inset-0 bg-black/70 backdrop-blur-md animate-fade-in" />
+      <div className="absolute inset-0 bg-black/35 dark:bg-black/70 backdrop-blur-md animate-fade-in" />
       <div className="relative animate-zoom-in">
         <div
           className="relative flex items-center justify-center"
@@ -475,7 +723,8 @@ function LightboxInner({ src, maskPreviewSrc, onClose, showNav, currentIndex, to
         >
           <img
             src={src}
-            className="saveable-image max-w-[85vw] max-h-[85vh] object-contain rounded-lg shadow-2xl"
+            data-image-id={imageId}
+            className="saveable-image max-w-[90vw] max-h-[70vh] sm:max-w-[85vw] sm:max-h-[75vh] object-contain rounded-lg shadow-2xl"
             onDragStart={(e) => e.preventDefault()}
             alt=""
           />
@@ -511,32 +760,61 @@ function LightboxInner({ src, maskPreviewSrc, onClose, showNav, currentIndex, to
         </>
       )}
 
+      {/* 下载图片 */}
       <button
         type="button"
-        onClick={(e) => {
-          e.stopPropagation()
-          onDownload()
-        }}
+        onClick={(e) => { e.stopPropagation(); onDownload() }}
         className="absolute right-4 top-4 z-20 flex h-9 w-9 items-center justify-center rounded-full bg-black/45 text-white shadow-lg backdrop-blur-sm transition hover:bg-black/65 sm:right-6 sm:top-6"
-        aria-label="保存图片"
-        title="保存图片"
+        aria-label="下载图片"
+        title="下载图片"
       >
-        <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-        </svg>
+        <DownloadIcon className="w-4 h-4" />
       </button>
 
-      {/* 底部指示器 */}
+      {/* 参考图操作 */}
+      {showInputActions && !isZoomed && (
+        <div className="absolute bottom-8 left-1/2 z-10 flex w-max -translate-x-1/2 items-center gap-2 rounded-2xl bg-white/90 dark:bg-black/60 p-2 backdrop-blur-xl border border-gray-200/80 dark:border-white/15 shadow-2xl transition-colors" onClick={(e) => e.stopPropagation()}>
+          <button
+            type="button"
+            className="flex items-center justify-center gap-2 whitespace-nowrap rounded-xl px-5 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-100 dark:text-white/90 dark:hover:bg-white/15 transition active:scale-95"
+            onClick={onReplace}
+          >
+            <RefreshIcon className="w-4 h-4" />
+            <span>替换图片</span>
+          </button>
+          <div
+            className="relative flex items-center"
+            onMouseEnter={editHint.show}
+            onMouseLeave={editHint.hide}
+            onTouchStart={editHint.startTouch}
+            onTouchEnd={editHint.clearTimer}
+            onTouchCancel={editHint.hide}
+          >
+            <ButtonTooltip visible={editDisabled && editHint.visible} text="只能有一张遮罩图" />
+            <button
+              type="button"
+              disabled={editDisabled}
+              className={`flex items-center justify-center gap-2 whitespace-nowrap rounded-xl px-5 py-2.5 text-sm font-medium shadow-md transition active:scale-95 ${editDisabled ? 'cursor-not-allowed bg-gray-100 text-gray-400 dark:bg-white/10 dark:text-white/40 shadow-none' : 'bg-blue-500 text-white hover:bg-blue-600 hover:shadow-blue-500/25'}`}
+              onClick={onEdit}
+            >
+              <EditIcon className="w-4 h-4" />
+              <span>编辑图片</span>
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* 指示器 */}
       {showZoomBadge && isZoomed && zoomPercent !== 100 && (
         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 pointer-events-none">
-          <span className="px-3 py-1.5 bg-black/50 text-white/80 text-xs rounded-full backdrop-blur-sm transition-opacity duration-500">
+          <span className="px-3 py-1.5 bg-white/90 dark:bg-black/50 text-gray-800 dark:text-white/80 text-xs rounded-full backdrop-blur-sm transition-opacity duration-500 border border-gray-200/80 dark:border-transparent">
             {zoomPercent}%
           </span>
         </div>
       )}
       {showNav && !isZoomed && (
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 pointer-events-none">
-          <span className="px-3 py-1.5 bg-black/50 text-white/80 text-xs rounded-full backdrop-blur-sm">
+        <div className="absolute top-6 left-1/2 -translate-x-1/2 pointer-events-none z-10">
+          <span className="px-3 py-1 bg-white/90 dark:bg-black/60 text-gray-800 dark:text-white/90 text-sm font-medium rounded-full backdrop-blur-md shadow-lg border border-gray-200/80 dark:border-white/15">
             {currentIndex + 1} / {total}
           </span>
         </div>
