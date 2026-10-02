@@ -161,6 +161,27 @@ async function probeNoCorsReachability(url: string, timeoutMs = 8000): Promise<'
   }
 }
 
+const IMAGE_DOWNLOAD_PROXY_PATH = '/api/image-proxy'
+
+/**
+ * 直连图片 URL 被跨域拦截时，改走部署自身的同源下载代理（由 api/image-proxy 提供，仅 Vercel 部署可用）。
+ * 静态部署（GitHub Pages / Docker / Cloudflare）访问该路径会命中 SPA 回退返回 HTML，此处返回 null，由调用方回退原有错误提示。
+ */
+export async function fetchImageBlobViaProxy(url: string, signal?: AbortSignal): Promise<Blob | null> {
+  if (!isHttpUrl(url)) return null
+  try {
+    const response = await fetch(`${IMAGE_DOWNLOAD_PROXY_PATH}?url=${encodeURIComponent(url)}`, {
+      cache: 'no-store',
+      signal,
+    })
+    const contentType = response.headers.get('content-type') ?? ''
+    if (!response.ok || !(contentType.startsWith('image/') || contentType.includes('octet-stream'))) return null
+    return await response.blob()
+  } catch {
+    return null
+  }
+}
+
 export async function fetchImageUrlAsDataUrl(url: string, fallbackMime: string, signal?: AbortSignal): Promise<string> {
   if (isDataUrl(url)) return url
 
@@ -172,6 +193,8 @@ export async function fetchImageUrlAsDataUrl(url: string, fallbackMime: string, 
     })
   } catch (err) {
     if (err instanceof TypeError) {
+      const proxiedBlob = await fetchImageBlobViaProxy(url, signal)
+      if (proxiedBlob) return blobToDataUrl(proxiedBlob, fallbackMime)
       const probe = await probeNoCorsReachability(url)
       if (probe === 'opaque') {
         throw new Error(`图片已生成，但因服务商未允许跨域，图片链接下载失败。${IMAGE_FETCH_CORS_HINT}`)
