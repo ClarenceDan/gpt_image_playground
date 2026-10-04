@@ -4,7 +4,8 @@ import { deleteFavoriteCollection, useStore, submitTask, submitAgentMessage, sto
 import { DEFAULT_PARAMS, type TaskRecord } from '../types'
 import { getActiveAgentRounds } from '../lib/agentConversationState'
 import { getActiveApiProfile, getAgentImageApiProfile, normalizeSettings } from '../lib/apiProfiles'
-import { getImageGenerationModel, isGptImage25Model } from '../lib/imageModels'
+import { CUSTOM_IMAGE_MODEL_VALUE, getImageGenerationModel, getImageModelSelectOptions, getImageModelSelectValue, isGptImage25Model } from '../lib/imageModels'
+import { isPresetProfileLocked } from '../lib/presetConfig'
 import { ensureImageCached, getCachedImage } from '../lib/imageCache'
 import { DEFAULT_FAL_IMAGE_SIZE, getChangedParams, getOutputImageLimitForSettings, normalizeParamsForSettings } from '../lib/paramCompatibility'
 import { getAtImageQuery, getImageMentionLabel, getPromptIndexFromVisibleIndex, getPromptMentionParts, getSelectedImageMentionLabel, imageMentionMatches, insertImageMentionAtVisibleRange, insertTextMentionAtVisibleRange, isCursorInSelectedImageMention, stripImageMentionMarkers } from '../lib/promptImageMentions'
@@ -94,6 +95,7 @@ export default function InputBar() {
   const params = useStore((s) => s.params)
   const setParams = useStore((s) => s.setParams)
   const settings = useStore((s) => s.settings)
+  const setActiveProfileImageModel = useStore((s) => s.setActiveProfileImageModel)
   const reusedTaskApiProfileId = useStore((s) => s.reusedTaskApiProfileId)
   const setShowSettings = useStore((s) => s.setShowSettings)
   const setLightboxImageId = useStore((s) => s.setLightboxImageId)
@@ -481,12 +483,14 @@ export default function InputBar() {
     ? DEFAULT_FAL_IMAGE_SIZE
     : (activeProfile.codexCli ? normalizeCodexCliImageSize(params.size) : normalizeImageSize(params.size)) || DEFAULT_PARAMS.size
 
+  const imageModel = getImageGenerationModel(activeProfile)
+  const imageModelDisabled = isPresetProfileLocked(activeProfile.id)
   const qualityOptions = [
     ...(!isFalProvider ? [{ label: 'auto', value: 'auto' }] : []),
     { label: 'low', value: 'low' },
     { label: 'medium', value: 'medium' },
     { label: 'high', value: 'high' },
-    ...(isGptImage25Model(getImageGenerationModel(activeProfile))
+    ...(isGptImage25Model(imageModel)
       ? [
           { label: 'xhigh', value: 'xhigh' },
           { label: 'max', value: 'max' },
@@ -1557,6 +1561,17 @@ export default function InputBar() {
       sizeHint={sizeHint}
       qualityHint={qualityHint}
       onOpenSizePicker={() => setShowSizePicker(true)}
+      imageModelValue={getImageModelSelectValue(activeProfile, imageModel)}
+      imageModelOptions={getImageModelSelectOptions(activeProfile, imageModel)}
+      onImageModelChange={(value) => {
+        if (imageModelDisabled) return
+        if (value === CUSTOM_IMAGE_MODEL_VALUE) {
+          setShowSettings(true, 'api')
+          return
+        }
+        setActiveProfileImageModel(activeProfile.id, value)
+      }}
+      imageModelDisabled={imageModelDisabled}
     />
   )
 
@@ -1774,7 +1789,7 @@ export default function InputBar() {
           <div className="mt-3">
             {/* 桌面端布局 */}
             <div className="hidden sm:flex items-end justify-between gap-3">
-              {renderParams('grid-cols-6')}
+              {renderParams('grid-cols-7')}
 
               <div className="flex gap-2 flex-shrink-0 mb-0.5">
                 <div

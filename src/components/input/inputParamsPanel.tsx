@@ -51,6 +51,10 @@ export default function InputParamsPanel({
   sizeHint,
   qualityHint,
   onOpenSizePicker,
+  imageModelValue,
+  imageModelOptions,
+  onImageModelChange,
+  imageModelDisabled,
 }: {
   cols: string
   params: TaskParams
@@ -91,9 +95,26 @@ export default function InputParamsPanel({
   sizeHint: HintTooltipState
   qualityHint: HintTooltipState
   onOpenSizePicker: () => void
+  imageModelValue: string
+  imageModelOptions: Array<{ label: string; value: string }>
+  onImageModelChange: (value: string) => void
+  imageModelDisabled: boolean
 }) {
   return (
     <div className={`grid ${cols} gap-2 text-xs flex-1`}>
+      <label className="flex flex-col gap-0.5">
+        <span className="text-gray-400 dark:text-gray-500 ml-1">模型</span>
+        <Select
+          value={imageModelValue}
+          onChange={onImageModelChange}
+          options={imageModelOptions}
+          disabled={imageModelDisabled}
+          showValueTooltips
+          className={imageModelDisabled
+            ? 'px-3 py-1.5 rounded-xl border border-gray-200/60 dark:border-white/[0.08] bg-gray-100/50 dark:bg-white/[0.05] opacity-50 cursor-not-allowed text-xs transition-all duration-200 shadow-sm'
+            : selectClass}
+        />
+      </label>
       <label
         className="relative flex flex-col gap-0.5"
         onMouseEnter={sizeHint.show}

@@ -21,7 +21,8 @@ import type {
 } from './types'
 import { DEFAULT_AGENT_MAX_TOOL_ROUNDS, DEFAULT_PARAMS } from './types'
 import { DEFAULT_SETTINGS, getActiveApiProfile, getAgentImageApiProfile, getAgentTextApiProfile, getCustomProviderDefinition, mergeImportedSettings, mergePresetImportedSettings, normalizeSettings, validateApiProfile } from './lib/apiProfiles'
-import { enforcePresetConfigPolicy, getPresetConfig, getPresetProfileIds, getPresetProviderIds, isPresetConfigDeletionPrevented, isPresetConfigOnlyEnabled, isPresetConfigParamsLocked, isPresetProfile, isPresetProviderDeletionPrevented } from './lib/presetConfig'
+import { applyImageGenerationModel, getImageGenerationModel } from './lib/imageModels'
+import { enforcePresetConfigPolicy, getPresetConfig, getPresetProfileIds, getPresetProviderIds, isPresetConfigDeletionPrevented, isPresetConfigOnlyEnabled, isPresetConfigParamsLocked, isPresetProfile, isPresetProfileLocked, isPresetProviderDeletionPrevented } from './lib/presetConfig'
 import { dismissAllTooltips } from './lib/tooltipDismiss'
 import { remapImageMentionsForOrder, replaceImageMentionsForApi } from './lib/promptImageMentions'
 import {
@@ -278,6 +279,7 @@ interface AppState {
   settings: AppSettings
   previousPresetConfig: PresetConfig | null
   setSettings: (s: Partial<AppSettings>) => void
+  setActiveProfileImageModel: (profileId: string, model: string) => void
   setPresetImportedSettings: (
     importedSettings: Partial<AppSettings> | unknown,
     transform?: (settings: AppSettings) => Partial<AppSettings>,
@@ -589,6 +591,27 @@ export const useStore = create<AppState>()(
       restorePresetProvider: (id) => set((state) => ({
         dismissedPresetProviderIds: state.dismissedPresetProviderIds.filter((item) => item !== id),
       })),
+      setActiveProfileImageModel: (profileId, model) => set((st) => {
+        const previous = normalizeSettings(st.settings)
+        const target = previous.profiles.find((profile) => profile.id === profileId)
+        if (!target || isPresetProfileLocked(target.id)) return {}
+        const nextModel = model.trim()
+        if (getImageGenerationModel(target) === nextModel) return {}
+        const nextProfiles = previous.profiles.map((profile) =>
+          profile.id === profileId ? { ...profile, ...applyImageGenerationModel(profile, nextModel) } : profile,
+        )
+        const nextActive = nextProfiles.find((profile) => profile.id === previous.activeProfileId) ?? nextProfiles[0]
+        const settings = normalizeSettings(enforcePresetConfigPolicy({
+          ...previous,
+          profiles: nextProfiles,
+          ...(nextActive ? { model: nextActive.model } : {}),
+        }, {
+          dismissedPresetProviderIds: st.dismissedPresetProviderIds.filter((id) =>
+            !isPresetProviderDeletionPrevented(id, previous.profiles),
+          ),
+        }))
+        return { settings }
+      }),
       setSettings: (s) => set((st) => {
         const previous = normalizeSettings(st.settings)
         const incoming = s as Partial<AppSettings>
@@ -1736,7 +1759,7 @@ export async function submitTask(options: { allowFullMask?: boolean; useCurrentA
     apiProfileId: activeProfile.id,
     apiProfileName: activeProfile.name,
     apiMode: activeProfile.apiMode,
-    apiModel: activeProfile.model,
+    apiModel: getImageGenerationModel(activeProfile) || activeProfile.model,
     inputImageIds: orderedInputImages.map((i) => i.id),
     maskTargetImageId,
     maskImageId,
@@ -2647,7 +2670,7 @@ async function executeAgentRound(
         apiProfileId: imageProfile.id,
         apiProfileName: imageProfile.name,
         apiMode: imageProfile.apiMode,
-        apiModel: imageProfile.model,
+        apiModel: getImageGenerationModel(imageProfile) || imageProfile.model,
         inputImageIds,
         maskTargetImageId: options.maskTargetImageId !== undefined ? options.maskTargetImageId : round.maskTargetImageId ?? null,
         maskImageId: options.maskImageId !== undefined ? options.maskImageId : round.maskImageId ?? null,
@@ -3229,7 +3252,7 @@ async function executeAgentRound(
           apiProfileId: imageProfile.id,
           apiProfileName: imageProfile.name,
           apiMode: imageProfile.apiMode,
-          apiModel: imageProfile.model,
+          apiModel: getImageGenerationModel(imageProfile) || imageProfile.model,
           inputImageIds: uniqueIds([...(round?.inputImageIds ?? []), ...promptRefs.imageIds]),
           maskTargetImageId: round?.maskTargetImageId ?? null,
           maskImageId: round?.maskImageId ?? null,
@@ -3837,7 +3860,7 @@ export async function retryTask(task: TaskRecord) {
     apiProfileId: activeProfile.id,
     apiProfileName: activeProfile.name,
     apiMode: activeProfile.apiMode,
-    apiModel: activeProfile.model,
+    apiModel: getImageGenerationModel(activeProfile) || activeProfile.model,
     inputImageIds: [...task.inputImageIds],
     maskTargetImageId: task.maskTargetImageId ?? null,
     maskImageId: task.maskImageId ?? null,

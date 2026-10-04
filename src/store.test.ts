@@ -5306,3 +5306,35 @@ describe('reused task API profile', () => {
     expect(state.showSettings).toBe(false)
   })
 })
+
+describe('setActiveProfileImageModel', () => {
+  it('writes the image model onto the current Images API profile', () => {
+    const profile = createDefaultOpenAIProfile({ model: 'gpt-image-2.5-sunburst' })
+    useStore.setState({
+      settings: normalizeSettings({ ...DEFAULT_SETTINGS, profiles: [profile], activeProfileId: profile.id, model: profile.model }),
+    })
+
+    useStore.getState().setActiveProfileImageModel(profile.id, 'gpt-image-2.5-flare')
+
+    const settings = useStore.getState().settings
+    expect(settings.profiles[0].model).toBe('gpt-image-2.5-flare')
+    expect(settings.model).toBe('gpt-image-2.5-flare')
+  })
+
+  it('writes Responses API image models onto imageGenerationModel', () => {
+    const profile = createDefaultOpenAIProfile({
+      apiMode: 'responses',
+      model: DEFAULT_RESPONSES_MODEL,
+      imageGenerationModel: 'gpt-image-2.5-sunburst',
+    })
+    useStore.setState({
+      settings: normalizeSettings({ ...DEFAULT_SETTINGS, profiles: [profile], activeProfileId: profile.id, model: profile.model, apiMode: 'responses' }),
+    })
+
+    useStore.getState().setActiveProfileImageModel(profile.id, 'gpt-image-2')
+
+    const next = useStore.getState().settings.profiles[0]
+    expect(next.model).toBe(DEFAULT_RESPONSES_MODEL)
+    expect(next.imageGenerationModel).toBe('gpt-image-2')
+  })
+})
