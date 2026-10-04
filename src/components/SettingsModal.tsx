@@ -1614,7 +1614,10 @@ export default function SettingsModal() {
                   <Select
                     value={getImageModelSelectValue(activeProfile, activeProfile.model)}
                     onChange={(value) => {
-                      if (value === CUSTOM_IMAGE_MODEL_VALUE) return
+                      if (value === CUSTOM_IMAGE_MODEL_VALUE) {
+                        updateActiveProfile({ model: '' })
+                        return
+                      }
                       updateActiveProfile({ model: value }, true)
                     }}
                     options={getImageModelSelectOptions(activeProfile, activeProfile.model)}
@@ -1658,7 +1661,10 @@ export default function SettingsModal() {
                   <Select
                     value={getImageModelSelectValue(activeProfile, activeProfile.imageGenerationModel ?? '')}
                     onChange={(value) => {
-                      if (value === CUSTOM_IMAGE_MODEL_VALUE) return
+                      if (value === CUSTOM_IMAGE_MODEL_VALUE) {
+                        updateActiveProfile({ imageGenerationModel: '' })
+                        return
+                      }
                       updateActiveProfile({ imageGenerationModel: value }, true)
                     }}
                     options={getImageModelSelectOptions(activeProfile, activeProfile.imageGenerationModel ?? '')}

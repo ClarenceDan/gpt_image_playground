@@ -4,7 +4,7 @@ import { deleteFavoriteCollection, useStore, submitTask, submitAgentMessage, sto
 import { DEFAULT_PARAMS, type TaskRecord } from '../types'
 import { getActiveAgentRounds } from '../lib/agentConversationState'
 import { getActiveApiProfile, getAgentImageApiProfile, normalizeSettings } from '../lib/apiProfiles'
-import { CUSTOM_IMAGE_MODEL_VALUE, getImageGenerationModel, getImageModelSelectOptions, getImageModelSelectValue, isGptImage25Model } from '../lib/imageModels'
+import { CUSTOM_IMAGE_MODEL_VALUE, getImageGenerationModel, getImageModelSelectOptions, isGptImage25Model } from '../lib/imageModels'
 import { isPresetProfileLocked } from '../lib/presetConfig'
 import { ensureImageCached, getCachedImage } from '../lib/imageCache'
 import { DEFAULT_FAL_IMAGE_SIZE, getChangedParams, getOutputImageLimitForSettings, normalizeParamsForSettings } from '../lib/paramCompatibility'
@@ -500,9 +500,6 @@ export default function InputBar() {
   const atImageLimit = inputImages.length >= API_MAX_IMAGES
   const uploadImageTooltipText = atImageLimit ? `参考图数量已达上限（${API_MAX_IMAGES} 张），无法继续添加` : '上传图片'
   const transparentOutputHint = useHintTooltip()
-  const handleTransparentOutputMenuOpenChange = useCallback((open: boolean) => {
-    if (open) transparentOutputHint.hide()
-  }, [transparentOutputHint.hide])
   const compressionHint = useHintTooltip({ enabled: () => compressionDisabled })
   const moderationHint = useHintTooltip({ enabled: () => moderationDisabled })
   const sizeHint = useHintTooltip({ enabled: () => isFalTextToImage || activeProfile.codexCli })
@@ -1535,7 +1532,6 @@ export default function InputBar() {
       showTransparentOutputControl={showTransparentOutputControl}
       transparentOutputEnabled={transparentOutputEnabled}
       transparentOutputHint={transparentOutputHint}
-      onTransparentOutputMenuOpenChange={handleTransparentOutputMenuOpenChange}
       compressionHint={compressionHint}
       compressionDisabled={compressionDisabled}
       outputCompressionInput={outputCompressionInput}
@@ -1561,7 +1557,7 @@ export default function InputBar() {
       sizeHint={sizeHint}
       qualityHint={qualityHint}
       onOpenSizePicker={() => setShowSizePicker(true)}
-      imageModelValue={getImageModelSelectValue(activeProfile, imageModel)}
+      imageModelValue={imageModel.trim() || CUSTOM_IMAGE_MODEL_VALUE}
       imageModelOptions={getImageModelSelectOptions(activeProfile, imageModel)}
       onImageModelChange={(value) => {
         if (imageModelDisabled) return
@@ -1789,7 +1785,7 @@ export default function InputBar() {
           <div className="mt-3">
             {/* 桌面端布局 */}
             <div className="hidden sm:flex items-end justify-between gap-3">
-              {renderParams('grid-cols-7')}
+              {renderParams('grid-cols-[2.2fr_1.2fr_repeat(5,0.8fr)]')}
 
               <div className="flex gap-2 flex-shrink-0 mb-0.5">
                 <div

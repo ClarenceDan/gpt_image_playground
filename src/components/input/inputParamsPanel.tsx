@@ -25,7 +25,6 @@ export default function InputParamsPanel({
   showTransparentOutputControl,
   transparentOutputEnabled,
   transparentOutputHint,
-  onTransparentOutputMenuOpenChange,
   compressionHint,
   compressionDisabled,
   outputCompressionInput,
@@ -69,7 +68,6 @@ export default function InputParamsPanel({
   showTransparentOutputControl: boolean
   transparentOutputEnabled: boolean
   transparentOutputHint: HintTooltipState
-  onTransparentOutputMenuOpenChange: (open: boolean) => void
   compressionHint: HintTooltipState
   compressionDisabled: boolean
   outputCompressionInput: string
@@ -158,8 +156,8 @@ export default function InputParamsPanel({
           disabled={activeProfile.codexCli}
           showValueTooltips={false}
           className={activeProfile.codexCli
-            ? 'px-3 py-1.5 rounded-xl border border-gray-200/60 dark:border-white/[0.08] bg-gray-100/50 dark:bg-white/[0.05] opacity-50 cursor-not-allowed text-xs transition-all duration-200 shadow-sm'
-            : selectClass}
+            ? 'px-2 py-1.5 rounded-xl border border-gray-200/60 dark:border-white/[0.08] bg-gray-100/50 dark:bg-white/[0.05] opacity-50 cursor-not-allowed text-xs transition-all duration-200 shadow-sm'
+            : `${selectClass} !px-2`}
         />
         <ButtonTooltip
           visible={(activeProfile.codexCli || isFalProvider) && qualityHint.visible}
@@ -183,7 +181,7 @@ export default function InputParamsPanel({
             { label: 'WebP', value: 'webp' },
           ]}
           showValueTooltips={false}
-          className={selectClass}
+          className={`${selectClass} !px-2`}
         />
       </label>
       {showTransparentOutputControl && (
@@ -197,23 +195,29 @@ export default function InputParamsPanel({
           onClick={transparentOutputHint.show}
         >
           <span className="text-gray-400 dark:text-gray-500 ml-1">透明背景</span>
-          <Select
-            value={transparentOutputEnabled ? 'on' : 'off'}
-            onChange={(val) => {
+          <button
+            type="button"
+            aria-pressed={transparentOutputEnabled}
+            disabled={!transparentOutputAvailable}
+            onClick={(e) => {
+              e.stopPropagation()
+              transparentOutputHint.hide()
               if (!transparentOutputAvailable) return
               setParams({
-                transparent_output: val === 'on',
+                transparent_output: !transparentOutputEnabled,
                 ...(params.output_format === 'png' ? { output_compression: null } : {}),
               })
             }}
-            options={[
-              { label: 'false', value: 'off' },
-              { label: 'true', value: 'on' },
-            ]}
-            showValueTooltips={false}
-            className={selectClass}
-            onOpenChange={onTransparentOutputMenuOpenChange}
-          />
+            className={`rounded-xl border px-2 py-1.5 text-xs shadow-sm transition-colors focus:outline-none focus:ring-1 focus:ring-blue-300/50 dark:focus:ring-blue-500/40 ${
+              transparentOutputEnabled
+                ? 'border-blue-500 bg-blue-500 text-white hover:bg-blue-600 dark:border-blue-400 dark:bg-blue-500 dark:hover:bg-blue-400'
+                : transparentOutputAvailable
+                  ? 'border-gray-200/60 bg-white/50 text-gray-600 hover:bg-white dark:border-white/[0.08] dark:bg-white/[0.03] dark:text-gray-300 dark:hover:bg-white/[0.06]'
+                  : 'cursor-not-allowed border-gray-200/60 bg-gray-100/50 text-gray-400 opacity-50 dark:border-white/[0.08] dark:bg-white/[0.05] dark:text-gray-500'
+            }`}
+          >
+            {transparentOutputEnabled ? '已开启' : '已关闭'}
+          </button>
           <ButtonTooltip
             visible={transparentOutputHint.visible}
             text="实现方式可在设置的 API 配置中选择"
@@ -240,7 +244,7 @@ export default function InputParamsPanel({
             min={0}
             max={100}
             placeholder="0-100"
-            className={`px-3 py-1.5 rounded-xl border border-gray-200/60 dark:border-white/[0.08] focus:outline-none text-xs transition-all duration-200 shadow-sm ${
+            className={`px-2 py-1.5 rounded-xl border border-gray-200/60 dark:border-white/[0.08] focus:outline-none text-xs transition-all duration-200 shadow-sm ${
               compressionDisabled
                 ? 'bg-gray-100/50 dark:bg-white/[0.05] opacity-50 cursor-not-allowed'
                 : 'bg-white/50 dark:bg-white/[0.03]'
@@ -274,8 +278,8 @@ export default function InputParamsPanel({
           disabled={moderationDisabled}
           showValueTooltips={false}
           className={moderationDisabled
-            ? 'px-3 py-1.5 rounded-xl border border-gray-200/60 dark:border-white/[0.08] bg-gray-100/50 dark:bg-white/[0.05] opacity-50 cursor-not-allowed text-xs transition-all duration-200 shadow-sm'
-            : selectClass}
+            ? 'px-2 py-1.5 rounded-xl border border-gray-200/60 dark:border-white/[0.08] bg-gray-100/50 dark:bg-white/[0.05] opacity-50 cursor-not-allowed text-xs transition-all duration-200 shadow-sm'
+            : `${selectClass} !px-2`}
         />
         <ButtonTooltip
           visible={moderationDisabled && moderationHint.visible}
@@ -318,7 +322,7 @@ export default function InputParamsPanel({
           type={agentAutoImageCount ? 'text' : 'number'}
           min={agentAutoImageCount ? undefined : 1}
           max={agentAutoImageCount ? undefined : outputImageLimit}
-          className={`px-3 py-1.5 rounded-xl border border-gray-200/60 dark:border-white/[0.08] focus:outline-none text-xs transition-all duration-200 shadow-sm ${
+          className={`px-2 py-1.5 rounded-xl border border-gray-200/60 dark:border-white/[0.08] focus:outline-none text-xs transition-all duration-200 shadow-sm ${
             agentAutoImageCount
               ? 'bg-gray-100/50 dark:bg-white/[0.05] opacity-50 cursor-not-allowed'
               : 'bg-white/50 dark:bg-white/[0.03]'
