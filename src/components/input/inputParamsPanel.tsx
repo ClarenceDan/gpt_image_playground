@@ -145,10 +145,12 @@ export default function InputParamsPanel({
           {displaySize}
         </button>
         <ButtonTooltip
-          visible={(isFalTextToImage || activeProfile.codexCli) && sizeHint.visible}
+          visible={(isFalTextToImage || activeProfile.codexCli || params.output_format === 'gif') && sizeHint.visible}
           text={isFalTextToImage
             ? <>fal.ai 的文生图模式不支持 <code className="rounded bg-white/10 px-1 py-0.5 font-mono">auto</code> 参数</>
-            : 'Codex CLI 不支持尺寸参数，此处设置仅基于提示词工程'}
+            : activeProfile.codexCli
+            ? 'Codex CLI 不支持尺寸参数，此处设置仅基于提示词工程'
+            : 'GIF 的尺寸指每一帧，帧数 × 帧尺寸受总像素预算限制'}
         />
       </label>
       <label
@@ -193,7 +195,7 @@ export default function InputParamsPanel({
             { label: 'PNG', value: 'png' },
             { label: 'JPEG', value: 'jpeg' },
             { label: 'WebP', value: 'webp' },
-            ...(gifOutputAvailable ? [{ label: 'GIF 动图', value: 'gif' }] : []),
+            ...(gifOutputAvailable ? [{ label: 'GIF', value: 'gif' }] : []),
           ]}
           showValueTooltips={false}
           className={`${selectClass} !px-2`}
@@ -241,7 +243,7 @@ export default function InputParamsPanel({
       )}
       {!showTransparentOutputControl && params.output_format === 'gif' && (
         <>
-          <label className="flex flex-col gap-0.5">
+          <label className="flex min-w-0 flex-col gap-0.5">
             <span className="text-gray-400 dark:text-gray-500 ml-1">帧数</span>
             <input
               value={frameCountInput}
@@ -251,10 +253,10 @@ export default function InputParamsPanel({
               min={2}
               max={64}
               placeholder="2-64"
-              className="px-2 py-1.5 rounded-xl border border-gray-200/60 dark:border-white/[0.08] bg-white/50 dark:bg-white/[0.03] focus:outline-none text-xs transition-all duration-200 shadow-sm"
+              className="w-full min-w-0 px-2 py-1.5 rounded-xl border border-gray-200/60 dark:border-white/[0.08] bg-white/50 dark:bg-white/[0.03] focus:outline-none text-xs transition-all duration-200 shadow-sm"
             />
           </label>
-          <label className="flex flex-col gap-0.5">
+          <label className="flex min-w-0 flex-col gap-0.5">
             <span className="text-gray-400 dark:text-gray-500 ml-1">帧时长</span>
             <input
               value={frameDurationInput}
@@ -264,7 +266,7 @@ export default function InputParamsPanel({
               min={20}
               max={2000}
               placeholder="毫秒"
-              className="px-2 py-1.5 rounded-xl border border-gray-200/60 dark:border-white/[0.08] bg-white/50 dark:bg-white/[0.03] focus:outline-none text-xs transition-all duration-200 shadow-sm"
+              className="w-full min-w-0 px-2 py-1.5 rounded-xl border border-gray-200/60 dark:border-white/[0.08] bg-white/50 dark:bg-white/[0.03] focus:outline-none text-xs transition-all duration-200 shadow-sm"
             />
           </label>
         </>

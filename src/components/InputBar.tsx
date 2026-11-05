@@ -1843,7 +1843,9 @@ export default function InputBar() {
           <div className="mt-3">
             {/* 桌面端布局 */}
             <div className="hidden sm:flex items-end justify-between gap-3">
-              {renderParams('grid-cols-[2.2fr_1.2fr_repeat(5,0.8fr)]')}
+              {renderParams(params.output_format === 'gif'
+                ? 'grid-cols-[1.9fr_1fr_0.72fr_0.68fr_0.7fr_0.8fr_0.72fr_0.6fr]'
+                : 'grid-cols-[2.2fr_1.2fr_repeat(5,0.8fr)]')}
 
               <div className="flex gap-2 flex-shrink-0 mb-0.5">
                 <div

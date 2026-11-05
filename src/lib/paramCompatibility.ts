@@ -10,6 +10,18 @@ export const GIF_MIN_FRAME_COUNT = 2
 export const GIF_MAX_FRAME_COUNT = 64
 export const GIF_MIN_FRAME_DURATION_MS = 20
 export const GIF_MAX_FRAME_DURATION_MS = 2000
+export const DEFAULT_GIF_FRAME_COUNT = 9
+export const DEFAULT_GIF_FRAME_DURATION_MS = 200
+/** GIF 单帧默认尺寸：9 帧合计约 722 万像素，落在 829 万的总像素预算内 */
+export const DEFAULT_GIF_IMAGE_SIZE = '896x896'
+/** OpenAI 对单次请求的总像素预算上限（与尺寸约束一致） */
+export const GIF_MAX_TOTAL_PIXELS = 8_294_400
+
+function getGifTotalPixels(size: string, frameCount: number) {
+  const match = size.match(/^(\d+)x(\d+)$/)
+  if (!match) return 0
+  return Number(match[1]) * Number(match[2]) * frameCount
+}
 
 export function getOutputImageLimitForSettings(settings: AppSettings) {
   return getActiveApiProfile(settings).provider === 'fal' ? MAX_FAL_OUTPUT_IMAGES : MAX_OPENAI_OUTPUT_IMAGES
@@ -64,6 +76,15 @@ export function normalizeParamsForSettings(
       GIF_MAX_FRAME_DURATION_MS,
       Math.max(GIF_MIN_FRAME_DURATION_MS, Math.round(nextParams.frame_duration_ms / 10) * 10),
     )
+  }
+
+  if (nextParams.output_format === 'gif') {
+    nextParams.frame_count = nextParams.frame_count ?? DEFAULT_GIF_FRAME_COUNT
+    nextParams.frame_duration_ms = nextParams.frame_duration_ms ?? DEFAULT_GIF_FRAME_DURATION_MS
+    // GIF 帧尺寸受总像素预算限制，auto 或超出预算的特大尺寸改用更适合多帧的小尺寸
+    if (nextParams.size === 'auto' || getGifTotalPixels(nextParams.size, nextParams.frame_count) > GIF_MAX_TOTAL_PIXELS) {
+      nextParams.size = DEFAULT_GIF_IMAGE_SIZE
+    }
   }
 
   if (nextParams.output_format === 'png' || nextParams.output_format === 'gif') {
