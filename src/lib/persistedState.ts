@@ -79,13 +79,15 @@ function normalizeParams(value: unknown, fallback: TaskParams): TaskParams {
     quality: value.quality === 'auto' || value.quality === 'low' || value.quality === 'medium' || value.quality === 'high' || value.quality === 'xhigh' || value.quality === 'max'
       ? value.quality
       : fallback.quality,
-    output_format: value.output_format === 'png' || value.output_format === 'jpeg' || value.output_format === 'webp' ? value.output_format : fallback.output_format,
+    output_format: value.output_format === 'png' || value.output_format === 'jpeg' || value.output_format === 'webp' || value.output_format === 'gif' ? value.output_format : fallback.output_format,
     output_compression: value.output_compression === null || (typeof value.output_compression === 'number' && Number.isFinite(value.output_compression))
       ? value.output_compression
       : fallback.output_compression,
     moderation: value.moderation === 'auto' || value.moderation === 'low' ? value.moderation : fallback.moderation,
     n: typeof value.n === 'number' && Number.isFinite(value.n) ? value.n : fallback.n,
     transparent_output: typeof value.transparent_output === 'boolean' ? value.transparent_output : fallback.transparent_output,
+    frame_count: typeof value.frame_count === 'number' && Number.isFinite(value.frame_count) ? value.frame_count : fallback.frame_count,
+    frame_duration_ms: typeof value.frame_duration_ms === 'number' && Number.isFinite(value.frame_duration_ms) ? value.frame_duration_ms : fallback.frame_duration_ms,
   }
 }
 

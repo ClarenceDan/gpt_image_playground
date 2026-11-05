@@ -54,6 +54,8 @@ const DEFAULT_GENERATE_BODY = {
   output_compression: '$params.output_compression',
   n: '$params.n',
   background: '$params.background',
+  frame_count: '$params.frame_count',
+  frame_duration_ms: '$params.frame_duration_ms',
 }
 const DEFAULT_EDIT_BODY = DEFAULT_GENERATE_BODY
 const DEFAULT_OPENAI_RESULT: CustomProviderResultMapping = {

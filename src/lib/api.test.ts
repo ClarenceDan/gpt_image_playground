@@ -179,6 +179,73 @@ describe('callImageApi', () => {
     expect(result.actualParams).toMatchObject({ quality: 'xhigh' })
   })
 
+  it('sends GIF animation params to the Images API for a 2.6 model', async () => {
+    const fetchMock = vi.spyOn(globalThis, 'fetch').mockResolvedValue(new Response(JSON.stringify({
+      data: [{ b64_json: 'aW1hZ2U=' }],
+      output_format: 'gif',
+      frame_count: 12,
+      frame_duration_ms: 150,
+    }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    }))
+
+    const result = await callImageApi({
+      settings: {
+        ...DEFAULT_SETTINGS,
+        model: 'gpt-image-2.6-sunburst',
+        profiles: DEFAULT_SETTINGS.profiles.map((profile) => ({
+          ...profile,
+          apiKey: 'test-key',
+          model: 'gpt-image-2.6-sunburst',
+        })),
+      },
+      prompt: 'prompt',
+      params: { ...DEFAULT_PARAMS, output_format: 'gif', frame_count: 12, frame_duration_ms: 150 },
+      inputImageDataUrls: [],
+    })
+
+    const body = JSON.parse(String((fetchMock.mock.calls[0][1] as RequestInit).body))
+    expect(body).toMatchObject({
+      model: 'gpt-image-2.6-sunburst',
+      output_format: 'gif',
+      frame_count: 12,
+      frame_duration_ms: 150,
+    })
+    expect(body.output_compression).toBeUndefined()
+    expect(body.stream).toBeUndefined()
+    expect(result.actualParams).toMatchObject({ output_format: 'gif', frame_count: 12, frame_duration_ms: 150 })
+  })
+
+  it('falls back to png when the edit request asks for GIF', async () => {
+    const fetchMock = vi.spyOn(globalThis, 'fetch').mockImplementation(async () => new Response(JSON.stringify({
+      data: [{ b64_json: 'aW1hZ2U=' }],
+    }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    }))
+
+    await callImageApi({
+      settings: {
+        ...DEFAULT_SETTINGS,
+        model: 'gpt-image-2.6-sunburst',
+        profiles: DEFAULT_SETTINGS.profiles.map((profile) => ({
+          ...profile,
+          apiKey: 'test-key',
+          model: 'gpt-image-2.6-sunburst',
+        })),
+      },
+      prompt: 'prompt',
+      params: { ...DEFAULT_PARAMS, output_format: 'gif', frame_count: 12 },
+      inputImageDataUrls: ['data:image/png;base64,aW1hZ2U='],
+    })
+
+    const editCall = fetchMock.mock.calls.find(([, request]) => (request as RequestInit | undefined)?.body instanceof FormData)
+    const body = editCall![1]?.body as FormData
+    expect(body.get('output_format')).toBe('png')
+    expect(body.get('frame_count')).toBeNull()
+  })
+
   it.each([false, true])('explains the image tool dropped error without retrying when streaming is %s', async (streamImages) => {
     const fetchMock = vi.spyOn(globalThis, 'fetch').mockResolvedValue(new Response(JSON.stringify({
       error: { message: "Tool choice 'required' must be specified with 'tools' parameter." },
@@ -1573,7 +1640,7 @@ describe('callImageApi', () => {
 
     expect(fetchMock.mock.calls[0][0]).toBe('https://sub2api.example.com/v1/images/generations/async')
     expect(JSON.parse(String((fetchMock.mock.calls[0][1] as RequestInit).body))).toMatchObject({
-      model: 'gpt-image-2.5-sunburst',
+      model: DEFAULT_IMAGES_MODEL,
       prompt: 'prompt',
       n: 1,
     })

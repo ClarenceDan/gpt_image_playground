@@ -154,7 +154,7 @@ function createResponsesImageTool(
     tool.quality = params.quality
   }
 
-  if (params.output_format !== 'png' && params.output_compression != null) {
+  if (params.output_format !== 'png' && params.output_format !== 'gif' && params.output_compression != null) {
     tool.output_compression = params.output_compression
   }
 
@@ -481,14 +481,18 @@ async function callImagesApiConcurrent(opts: CallApiOptions, profile: ApiProfile
 }
 
 async function callImagesApiSingle(opts: CallApiOptions, profile: ApiProfile): Promise<CallApiResult> {
-  const { prompt: originalPrompt, params, inputImageDataUrls } = opts
+  const { prompt: originalPrompt, params: requestedParams, inputImageDataUrls } = opts
+  const isEdit = inputImageDataUrls.length > 0
+  // 编辑接口不支持 GIF 动图输出
+  const params = isEdit && requestedParams.output_format === 'gif'
+    ? { ...requestedParams, output_format: 'png' as const, frame_count: null, frame_duration_ms: null }
+    : requestedParams
   const sizePrompt = profile.codexCli && !opts.skipCodexCliSizePrompt
     ? prependCodexCliSizePrompt(originalPrompt, params.size)
     : originalPrompt
   const prompt = profile.codexCli && !opts.settings.allowPromptRewrite
     ? `${PROMPT_REWRITE_GUARD_PREFIX}\n${sizePrompt}`
     : sizePrompt
-  const isEdit = inputImageDataUrls.length > 0
   const mime = MIME_MAP[params.output_format] || 'image/png'
   const proxyConfig = readClientDevProxyConfig()
   const useApiProxy = shouldUseApiProxy(profile.apiProxy, proxyConfig)
@@ -518,7 +522,7 @@ async function callImagesApiSingle(opts: CallApiOptions, profile: ApiProfile): P
         formData.append('quality', params.quality)
       }
 
-      if (params.output_format !== 'png' && params.output_compression != null) {
+      if (params.output_format !== 'png' && params.output_format !== 'gif' && params.output_compression != null) {
         formData.append('output_compression', String(params.output_compression))
       }
       if (params.n > 1) {
@@ -587,7 +591,10 @@ async function callImagesApiSingle(opts: CallApiOptions, profile: ApiProfile): P
         body.quality = params.quality
       }
 
-      if (params.output_format !== 'png' && params.output_compression != null) {
+      if (params.output_format === 'gif') {
+        if (params.frame_count != null) body.frame_count = params.frame_count
+        if (params.frame_duration_ms != null) body.frame_duration_ms = params.frame_duration_ms
+      } else if (params.output_compression != null) {
         body.output_compression = params.output_compression
       }
       if (params.n > 1) {
@@ -596,7 +603,8 @@ async function callImagesApiSingle(opts: CallApiOptions, profile: ApiProfile): P
       if (profile.responseFormatB64Json) {
         body.response_format = 'b64_json'
       }
-      if (profile.streamImages) {
+      // GIF 输出不支持流式与分块预览
+      if (profile.streamImages && params.output_format !== 'gif') {
         body.stream = true
         body.partial_images = getStreamPartialImages(profile)
       }

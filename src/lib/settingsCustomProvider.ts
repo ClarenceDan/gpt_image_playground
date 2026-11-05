@@ -14,6 +14,8 @@ export const DEFAULT_CUSTOM_PROVIDER_JSON = JSON.stringify({
       output_compression: '$params.output_compression',
       n: '$params.n',
       background: '$params.background',
+      frame_count: '$params.frame_count',
+      frame_duration_ms: '$params.frame_duration_ms',
     },
     result: {
       imageUrlPaths: ['data.*.url'],
@@ -34,6 +36,8 @@ export const DEFAULT_CUSTOM_PROVIDER_JSON = JSON.stringify({
       output_compression: '$params.output_compression',
       n: '$params.n',
       background: '$params.background',
+      frame_count: '$params.frame_count',
+      frame_duration_ms: '$params.frame_duration_ms',
     },
     files: [
       { field: 'image[]', source: 'inputImages', array: true },
@@ -98,6 +102,7 @@ body 模板变量：
 - $profile.model：用户在设置里填写的模型 ID。
 - $prompt：当前提示词。
 - $params.size、$params.quality、$params.output_format、$params.output_compression、$params.moderation、$params.n：应用内参数。
+- $params.frame_count、$params.frame_duration_ms：GIF 动图输出的帧数与帧时长，未设置时自动省略。
 - $params.background：API 原生透明背景参数；启用时为 "transparent"，未启用时自动省略。
 - $inputImages.dataUrls：参考图 data URL 数组；没有参考图时会自动省略该字段。
 - $mask.dataUrl：遮罩图 data URL；没有遮罩时会自动省略该字段。

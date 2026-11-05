@@ -1,12 +1,16 @@
 import type { ApiProfile } from '../types'
 
-export const DEFAULT_IMAGES_MODEL = 'gpt-image-2.5-sunburst'
+export const DEFAULT_IMAGES_MODEL = 'gpt-image-2.6-sunburst'
 export const CUSTOM_IMAGE_MODEL_VALUE = '__custom_image_model__'
 
 const OPENAI_IMAGE_MODEL_PRESETS = [
-  { value: 'gpt-image-2', label: 'gpt-image-2' },
+  { value: 'gpt-image-2.6-sunburst', label: 'gpt-image-2.6-sunburst' },
+  { value: 'gpt-image-2.6-flare', label: 'gpt-image-2.6-flare' },
   { value: 'gpt-image-2.5-sunburst', label: 'gpt-image-2.5-sunburst' },
   { value: 'gpt-image-2.5-flare', label: 'gpt-image-2.5-flare' },
+  { value: 'gpt-image-2.5-sunburst-2026-09-08', label: 'gpt-image-2.5-sunburst-2026-09-08' },
+  { value: 'gpt-image-2.5-flare-2026-09-08', label: 'gpt-image-2.5-flare-2026-09-08' },
+  { value: 'gpt-image-2', label: 'gpt-image-2' },
 ] as const
 
 const FAL_IMAGE_MODEL_PRESETS = [
@@ -23,6 +27,23 @@ export function getImageGenerationModel(profile: ApiProfile) {
 
 export function isGptImage25Model(model: string) {
   return model.trim().toLowerCase().includes('gpt-image-2.5')
+}
+
+export function isGptImage26Model(model: string) {
+  return model.trim().toLowerCase().includes('gpt-image-2.6')
+}
+
+/** 2.5 起支持 xhigh / max 两档额外质量 */
+export function supportsExtendedQuality(model: string) {
+  return isGptImage25Model(model) || isGptImage26Model(model)
+}
+
+/** GIF 动图输出目前仅 2.6 系列支持，且只在 Images 生成接口可用 */
+export function supportsGifOutput(profile: ApiProfile) {
+  return profile.provider !== 'fal'
+    && profile.apiMode !== 'responses'
+    && !profile.codexCli
+    && isGptImage26Model(getImageGenerationModel(profile))
 }
 
 export function usesImageGenerationModelField(profile: Pick<ApiProfile, 'provider' | 'apiMode'>) {

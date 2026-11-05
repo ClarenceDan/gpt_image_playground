@@ -4,7 +4,7 @@ import { deleteFavoriteCollection, useStore, submitTask, submitAgentMessage, sto
 import { DEFAULT_PARAMS, type TaskRecord } from '../types'
 import { getActiveAgentRounds } from '../lib/agentConversationState'
 import { getActiveApiProfile, getAgentImageApiProfile, normalizeSettings } from '../lib/apiProfiles'
-import { CUSTOM_IMAGE_MODEL_VALUE, getImageGenerationModel, getImageModelSelectOptions, isGptImage25Model } from '../lib/imageModels'
+import { CUSTOM_IMAGE_MODEL_VALUE, getImageGenerationModel, getImageModelSelectOptions, supportsExtendedQuality, supportsGifOutput } from '../lib/imageModels'
 import { isPresetProfileLocked } from '../lib/presetConfig'
 import { ensureImageCached, getCachedImage } from '../lib/imageCache'
 import { DEFAULT_FAL_IMAGE_SIZE, getChangedParams, getOutputImageLimitForSettings, normalizeParamsForSettings } from '../lib/paramCompatibility'
@@ -408,6 +408,12 @@ export default function InputBar() {
   const [outputCompressionInput, setOutputCompressionInput] = useState(
     params.output_compression == null ? '' : String(params.output_compression),
   )
+  const [frameCountInput, setFrameCountInput] = useState(
+    params.frame_count == null ? '' : String(params.frame_count),
+  )
+  const [frameDurationInput, setFrameDurationInput] = useState(
+    params.frame_duration_ms == null ? '' : String(params.frame_duration_ms),
+  )
   const [nInput, setNInput] = useState(String(params.n))
   const [nInputFocused, setNInputFocused] = useState(false)
   const dragCounter = useRef(0)
@@ -468,7 +474,7 @@ export default function InputBar() {
   const transparentOutputAvailable = appMode === 'gallery'
   const showTransparentOutputControl = transparentOutputAvailable && (params.output_format === 'png' || params.output_format === 'webp')
   const transparentOutputEnabled = transparentOutputAvailable && showTransparentOutputControl && params.transparent_output
-  const compressionDisabled = params.output_format === 'png' || isFalProvider
+  const compressionDisabled = params.output_format === 'png' || params.output_format === 'gif' || isFalProvider
   const outputImageLimit = getOutputImageLimitForSettings(effectiveSettings)
   const isFalTextToImage = isFalProvider && inputImages.length === 0
   const nDraftValue = Number(nInput)
@@ -485,12 +491,13 @@ export default function InputBar() {
 
   const imageModel = getImageGenerationModel(activeProfile)
   const imageModelDisabled = isPresetProfileLocked(activeProfile.id)
+  const gifOutputAvailable = appMode === 'gallery' && inputImages.length === 0 && supportsGifOutput(activeProfile)
   const qualityOptions = [
     ...(!isFalProvider ? [{ label: 'auto', value: 'auto' }] : []),
     { label: 'low', value: 'low' },
     { label: 'medium', value: 'medium' },
     { label: 'high', value: 'high' },
-    ...(isGptImage25Model(imageModel)
+    ...(supportsExtendedQuality(imageModel)
       ? [
           { label: 'xhigh', value: 'xhigh' },
           { label: 'max', value: 'max' },
@@ -632,6 +639,14 @@ export default function InputBar() {
   }, [params.output_compression])
 
   useEffect(() => {
+    setFrameCountInput(params.frame_count == null ? '' : String(params.frame_count))
+  }, [params.frame_count])
+
+  useEffect(() => {
+    setFrameDurationInput(params.frame_duration_ms == null ? '' : String(params.frame_duration_ms))
+  }, [params.frame_duration_ms])
+
+  useEffect(() => {
     setNInput(agentAutoImageCount ? 'auto' : String(params.n))
   }, [agentAutoImageCount, params.n])
 
@@ -686,6 +701,42 @@ export default function InputBar() {
     setOutputCompressionInput(String(nextValue))
     setParams({ output_compression: nextValue })
   }, [outputCompressionInput, params.output_compression, setParams])
+
+  const commitFrameCount = useCallback(() => {
+    if (frameCountInput.trim() === '') {
+      setFrameCountInput('')
+      setParams({ frame_count: null })
+      return
+    }
+
+    const nextValue = Number(frameCountInput)
+    if (Number.isNaN(nextValue)) {
+      setFrameCountInput(params.frame_count == null ? '' : String(params.frame_count))
+      return
+    }
+
+    const clampedValue = Math.min(64, Math.max(2, Math.round(nextValue)))
+    setFrameCountInput(String(clampedValue))
+    setParams({ frame_count: clampedValue })
+  }, [frameCountInput, params.frame_count, setParams])
+
+  const commitFrameDuration = useCallback(() => {
+    if (frameDurationInput.trim() === '') {
+      setFrameDurationInput('')
+      setParams({ frame_duration_ms: null })
+      return
+    }
+
+    const nextValue = Number(frameDurationInput)
+    if (Number.isNaN(nextValue)) {
+      setFrameDurationInput(params.frame_duration_ms == null ? '' : String(params.frame_duration_ms))
+      return
+    }
+
+    const clampedValue = Math.min(2000, Math.max(20, Math.round(nextValue / 10) * 10))
+    setFrameDurationInput(String(clampedValue))
+    setParams({ frame_duration_ms: clampedValue })
+  }, [frameDurationInput, params.frame_duration_ms, setParams])
 
   const commitN = useCallback(() => {
     nLimitHint.hide()
@@ -1537,6 +1588,13 @@ export default function InputBar() {
       outputCompressionInput={outputCompressionInput}
       setOutputCompressionInput={setOutputCompressionInput}
       commitOutputCompression={commitOutputCompression}
+      gifOutputAvailable={gifOutputAvailable}
+      frameCountInput={frameCountInput}
+      setFrameCountInput={setFrameCountInput}
+      commitFrameCount={commitFrameCount}
+      frameDurationInput={frameDurationInput}
+      setFrameDurationInput={setFrameDurationInput}
+      commitFrameDuration={commitFrameDuration}
       moderationHint={moderationHint}
       moderationDisabled={moderationDisabled}
       agentAutoImageCount={agentAutoImageCount}

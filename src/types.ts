@@ -141,11 +141,15 @@ export interface AppSettings {
 export interface TaskParams {
   size: string
   quality: 'auto' | 'low' | 'medium' | 'high' | 'xhigh' | 'max'
-  output_format: 'png' | 'jpeg' | 'webp'
+  output_format: 'png' | 'jpeg' | 'webp' | 'gif'
   output_compression: number | null
   moderation: 'auto' | 'low'
   n: number
   transparent_output: boolean
+  /** GIF 输出的帧数，仅 output_format 为 gif 时生效 */
+  frame_count: number | null
+  /** GIF 输出的每帧时长（毫秒），仅 output_format 为 gif 时生效 */
+  frame_duration_ms: number | null
 }
 
 export const DEFAULT_PARAMS: TaskParams = {
@@ -156,6 +160,8 @@ export const DEFAULT_PARAMS: TaskParams = {
   moderation: 'auto',
   n: 1,
   transparent_output: false,
+  frame_count: null,
+  frame_duration_ms: null,
 }
 
 // ===== 输入图片（UI 层面） =====

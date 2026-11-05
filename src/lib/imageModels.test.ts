@@ -2,11 +2,15 @@ import { describe, expect, it } from 'vitest'
 import { createDefaultFalProfile, createDefaultOpenAIProfile } from './apiProfiles'
 import {
   CUSTOM_IMAGE_MODEL_VALUE,
+  DEFAULT_IMAGES_MODEL,
   applyImageGenerationModel,
   getImageGenerationModel,
   getImageModelSelectOptions,
   getImageModelSelectValue,
+  isGptImage26Model,
   isPresetImageModel,
+  supportsExtendedQuality,
+  supportsGifOutput,
   usesImageGenerationModelField,
 } from './imageModels'
 
@@ -31,9 +35,13 @@ describe('image model presets', () => {
     expect(isPresetImageModel(profile, profile.model)).toBe(false)
     expect(getImageModelSelectValue(profile, profile.model)).toBe(CUSTOM_IMAGE_MODEL_VALUE)
     expect(getImageModelSelectOptions(profile, profile.model)).toEqual([
-      { label: 'gpt-image-2', value: 'gpt-image-2' },
+      { label: 'gpt-image-2.6-sunburst', value: 'gpt-image-2.6-sunburst' },
+      { label: 'gpt-image-2.6-flare', value: 'gpt-image-2.6-flare' },
       { label: 'gpt-image-2.5-sunburst', value: 'gpt-image-2.5-sunburst' },
       { label: 'gpt-image-2.5-flare', value: 'gpt-image-2.5-flare' },
+      { label: 'gpt-image-2.5-sunburst-2026-09-08', value: 'gpt-image-2.5-sunburst-2026-09-08' },
+      { label: 'gpt-image-2.5-flare-2026-09-08', value: 'gpt-image-2.5-flare-2026-09-08' },
+      { label: 'gpt-image-2', value: 'gpt-image-2' },
       { label: 'vendor/gpt-image-2', value: 'vendor/gpt-image-2' },
       { label: '自定义', value: CUSTOM_IMAGE_MODEL_VALUE },
     ])
@@ -54,10 +62,29 @@ describe('image model presets', () => {
     const profile = createDefaultOpenAIProfile({ model: 'gpt-image-2' })
     expect(getImageModelSelectValue(profile, '')).toBe(CUSTOM_IMAGE_MODEL_VALUE)
     expect(getImageModelSelectOptions(profile, '').map((option) => option.value)).toEqual([
-      'gpt-image-2',
+      'gpt-image-2.6-sunburst',
+      'gpt-image-2.6-flare',
       'gpt-image-2.5-sunburst',
       'gpt-image-2.5-flare',
+      'gpt-image-2.5-sunburst-2026-09-08',
+      'gpt-image-2.5-flare-2026-09-08',
+      'gpt-image-2',
       CUSTOM_IMAGE_MODEL_VALUE,
     ])
+  })
+
+  it('detects 2.6 models and gif-capable profiles', () => {
+    expect(DEFAULT_IMAGES_MODEL).toBe('gpt-image-2.6-sunburst')
+    expect(isGptImage26Model('gpt-image-2.6-flare')).toBe(true)
+    expect(isGptImage26Model('gpt-image-2.5-flare')).toBe(false)
+    expect(supportsExtendedQuality('gpt-image-2.6-sunburst')).toBe(true)
+    expect(supportsExtendedQuality('gpt-image-2.5-flare-2026-09-08')).toBe(true)
+    expect(supportsExtendedQuality('gpt-image-2')).toBe(false)
+
+    expect(supportsGifOutput(createDefaultOpenAIProfile({ model: 'gpt-image-2.6-sunburst' }))).toBe(true)
+    expect(supportsGifOutput(createDefaultOpenAIProfile({ model: 'gpt-image-2.5-sunburst' }))).toBe(false)
+    expect(supportsGifOutput(createDefaultOpenAIProfile({ model: 'gpt-image-2.6-sunburst', apiMode: 'responses' }))).toBe(false)
+    expect(supportsGifOutput(createDefaultOpenAIProfile({ model: 'gpt-image-2.6-sunburst', codexCli: true }))).toBe(false)
+    expect(supportsGifOutput(createDefaultFalProfile({ model: 'openai/gpt-image-2.6/sunburst' }))).toBe(false)
   })
 })

@@ -1001,12 +1001,23 @@ export default function DetailModal() {
                   </div>
                 </div>
               )}
-              {task.params.output_format !== 'png' && (
+              {task.params.output_format !== 'png' && task.params.output_format !== 'gif' && (
                 <div className="bg-gray-50 dark:bg-white/[0.03] rounded-lg px-3 py-2 min-w-0 overflow-hidden">
                   <span className="text-gray-400 dark:text-gray-500">压缩率</span>
                   <br />
                   <div className="mt-0.5 overflow-x-auto hide-scrollbar whitespace-nowrap mask-edge-r pr-2">
                     <span className="font-medium text-gray-700 dark:text-gray-300">{outputCompressionText}</span>
+                  </div>
+                </div>
+              )}
+              {task.params.output_format === 'gif' && (
+                <div className="bg-gray-50 dark:bg-white/[0.03] rounded-lg px-3 py-2 min-w-0 overflow-hidden">
+                  <span className="text-gray-400 dark:text-gray-500">帧数 / 帧时长</span>
+                  <br />
+                  <div className="mt-0.5 overflow-x-auto hide-scrollbar whitespace-nowrap mask-edge-r pr-2">
+                    <span className="font-medium text-gray-700 dark:text-gray-300">
+                      {task.params.frame_count == null ? '默认' : task.params.frame_count} / {task.params.frame_duration_ms == null ? '默认' : `${task.params.frame_duration_ms}ms`}
+                    </span>
                   </div>
                 </div>
               )}

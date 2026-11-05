@@ -30,6 +30,13 @@ export default function InputParamsPanel({
   outputCompressionInput,
   setOutputCompressionInput,
   commitOutputCompression,
+  gifOutputAvailable,
+  frameCountInput,
+  setFrameCountInput,
+  commitFrameCount,
+  frameDurationInput,
+  setFrameDurationInput,
+  commitFrameDuration,
   moderationHint,
   moderationDisabled,
   agentAutoImageCount,
@@ -73,6 +80,13 @@ export default function InputParamsPanel({
   outputCompressionInput: string
   setOutputCompressionInput: (value: string) => void
   commitOutputCompression: () => void
+  gifOutputAvailable: boolean
+  frameCountInput: string
+  setFrameCountInput: (value: string) => void
+  commitFrameCount: () => void
+  frameDurationInput: string
+  setFrameDurationInput: (value: string) => void
+  commitFrameDuration: () => void
   moderationHint: HintTooltipState
   moderationDisabled: boolean
   agentAutoImageCount: boolean
@@ -179,6 +193,7 @@ export default function InputParamsPanel({
             { label: 'PNG', value: 'png' },
             { label: 'JPEG', value: 'jpeg' },
             { label: 'WebP', value: 'webp' },
+            ...(gifOutputAvailable ? [{ label: 'GIF 动图', value: 'gif' }] : []),
           ]}
           showValueTooltips={false}
           className={`${selectClass} !px-2`}
@@ -224,7 +239,37 @@ export default function InputParamsPanel({
           />
         </label>
       )}
-      {!showTransparentOutputControl && (
+      {!showTransparentOutputControl && params.output_format === 'gif' && (
+        <>
+          <label className="flex flex-col gap-0.5">
+            <span className="text-gray-400 dark:text-gray-500 ml-1">帧数</span>
+            <input
+              value={frameCountInput}
+              onChange={(e) => setFrameCountInput(e.target.value)}
+              onBlur={commitFrameCount}
+              type="number"
+              min={2}
+              max={64}
+              placeholder="2-64"
+              className="px-2 py-1.5 rounded-xl border border-gray-200/60 dark:border-white/[0.08] bg-white/50 dark:bg-white/[0.03] focus:outline-none text-xs transition-all duration-200 shadow-sm"
+            />
+          </label>
+          <label className="flex flex-col gap-0.5">
+            <span className="text-gray-400 dark:text-gray-500 ml-1">帧时长</span>
+            <input
+              value={frameDurationInput}
+              onChange={(e) => setFrameDurationInput(e.target.value)}
+              onBlur={commitFrameDuration}
+              type="number"
+              min={20}
+              max={2000}
+              placeholder="毫秒"
+              className="px-2 py-1.5 rounded-xl border border-gray-200/60 dark:border-white/[0.08] bg-white/50 dark:bg-white/[0.03] focus:outline-none text-xs transition-all duration-200 shadow-sm"
+            />
+          </label>
+        </>
+      )}
+      {!showTransparentOutputControl && params.output_format !== 'gif' && (
         <label
           className="relative flex flex-col gap-0.5"
           onMouseEnter={compressionHint.show}
