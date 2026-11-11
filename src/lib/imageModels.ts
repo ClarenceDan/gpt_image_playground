@@ -4,8 +4,10 @@ export const DEFAULT_IMAGES_MODEL = 'gpt-image-2.6-sunburst'
 export const CUSTOM_IMAGE_MODEL_VALUE = '__custom_image_model__'
 
 const OPENAI_IMAGE_MODEL_PRESETS = [
+  { value: 'gpt-image-2.6', label: 'gpt-image-2.6' },
   { value: 'gpt-image-2.6-sunburst', label: 'gpt-image-2.6-sunburst' },
   { value: 'gpt-image-2.6-flare', label: 'gpt-image-2.6-flare' },
+  { value: 'gpt-image-2.5', label: 'gpt-image-2.5' },
   { value: 'gpt-image-2.5-sunburst', label: 'gpt-image-2.5-sunburst' },
   { value: 'gpt-image-2.5-flare', label: 'gpt-image-2.5-flare' },
   { value: 'gpt-image-2.5-sunburst-2026-09-08', label: 'gpt-image-2.5-sunburst-2026-09-08' },

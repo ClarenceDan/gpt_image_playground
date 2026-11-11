@@ -35,8 +35,10 @@ describe('image model presets', () => {
     expect(isPresetImageModel(profile, profile.model)).toBe(false)
     expect(getImageModelSelectValue(profile, profile.model)).toBe(CUSTOM_IMAGE_MODEL_VALUE)
     expect(getImageModelSelectOptions(profile, profile.model)).toEqual([
+      { label: 'gpt-image-2.6', value: 'gpt-image-2.6' },
       { label: 'gpt-image-2.6-sunburst', value: 'gpt-image-2.6-sunburst' },
       { label: 'gpt-image-2.6-flare', value: 'gpt-image-2.6-flare' },
+      { label: 'gpt-image-2.5', value: 'gpt-image-2.5' },
       { label: 'gpt-image-2.5-sunburst', value: 'gpt-image-2.5-sunburst' },
       { label: 'gpt-image-2.5-flare', value: 'gpt-image-2.5-flare' },
       { label: 'gpt-image-2.5-sunburst-2026-09-08', value: 'gpt-image-2.5-sunburst-2026-09-08' },
@@ -62,8 +64,10 @@ describe('image model presets', () => {
     const profile = createDefaultOpenAIProfile({ model: 'gpt-image-2' })
     expect(getImageModelSelectValue(profile, '')).toBe(CUSTOM_IMAGE_MODEL_VALUE)
     expect(getImageModelSelectOptions(profile, '').map((option) => option.value)).toEqual([
+      'gpt-image-2.6',
       'gpt-image-2.6-sunburst',
       'gpt-image-2.6-flare',
+      'gpt-image-2.5',
       'gpt-image-2.5-sunburst',
       'gpt-image-2.5-flare',
       'gpt-image-2.5-sunburst-2026-09-08',
@@ -75,14 +79,17 @@ describe('image model presets', () => {
 
   it('detects 2.6 models and gif-capable profiles', () => {
     expect(DEFAULT_IMAGES_MODEL).toBe('gpt-image-2.6-sunburst')
+    expect(isGptImage26Model('gpt-image-2.6')).toBe(true)
     expect(isGptImage26Model('gpt-image-2.6-flare')).toBe(true)
-    expect(isGptImage26Model('gpt-image-2.5-flare')).toBe(false)
+    expect(isGptImage26Model('gpt-image-2.5')).toBe(false)
     expect(supportsExtendedQuality('gpt-image-2.6-sunburst')).toBe(true)
+    expect(supportsExtendedQuality('gpt-image-2.5')).toBe(true)
     expect(supportsExtendedQuality('gpt-image-2.5-flare-2026-09-08')).toBe(true)
     expect(supportsExtendedQuality('gpt-image-2')).toBe(false)
 
+    expect(supportsGifOutput(createDefaultOpenAIProfile({ model: 'gpt-image-2.6' }))).toBe(true)
     expect(supportsGifOutput(createDefaultOpenAIProfile({ model: 'gpt-image-2.6-sunburst' }))).toBe(true)
-    expect(supportsGifOutput(createDefaultOpenAIProfile({ model: 'gpt-image-2.5-sunburst' }))).toBe(false)
+    expect(supportsGifOutput(createDefaultOpenAIProfile({ model: 'gpt-image-2.5' }))).toBe(false)
     expect(supportsGifOutput(createDefaultOpenAIProfile({ model: 'gpt-image-2.6-sunburst', apiMode: 'responses' }))).toBe(false)
     expect(supportsGifOutput(createDefaultOpenAIProfile({ model: 'gpt-image-2.6-sunburst', codexCli: true }))).toBe(false)
     expect(supportsGifOutput(createDefaultFalProfile({ model: 'openai/gpt-image-2.6/sunburst' }))).toBe(false)
