@@ -214,10 +214,9 @@ describe('callImageApi', () => {
     })
     expect(body.output_compression).toBeUndefined()
     expect(body.stream).toBeUndefined()
-    expect(result.actualParams).toMatchObject({ output_format: 'gif', frame_count: 12, frame_duration_ms: 150 })
   })
 
-  it('falls back to png when the edit request asks for GIF', async () => {
+  it('sends GIF frame params on the edit request', async () => {
     const fetchMock = vi.spyOn(globalThis, 'fetch').mockImplementation(async () => new Response(JSON.stringify({
       data: [{ b64_json: 'aW1hZ2U=' }],
     }), {
@@ -242,8 +241,8 @@ describe('callImageApi', () => {
 
     const editCall = fetchMock.mock.calls.find(([, request]) => (request as RequestInit | undefined)?.body instanceof FormData)
     const body = editCall![1]?.body as FormData
-    expect(body.get('output_format')).toBe('png')
-    expect(body.get('frame_count')).toBeNull()
+    expect(body.get('output_format')).toBe('gif')
+    expect(body.get('frame_count')).toBe('12')
   })
 
   it.each([false, true])('explains the image tool dropped error without retrying when streaming is %s', async (streamImages) => {
@@ -1280,6 +1279,202 @@ describe('callImageApi', () => {
       expect(body.get('n')).toBe('1')
       expect(body.get('background')).toBe('transparent')
     }
+  })
+
+  it('submits raw base64 reference images for custom providers via $inputImages.base64', async () => {
+    const fetchMock = vi.spyOn(globalThis, 'fetch').mockImplementation(async () => new Response(JSON.stringify({
+      data: [{ b64_json: 'aW1hZ2U=' }],
+    }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    }))
+
+    await callImageApi({
+      settings: {
+        ...DEFAULT_SETTINGS,
+        customProviders: [{
+          id: 'custom-raw-base64',
+          name: 'Custom Raw Base64',
+          submit: {
+            path: 'images/generations',
+            body: { model: '$profile.model', prompt: '$prompt', image: '$inputImages.base64' },
+            result: { b64JsonPaths: ['data.*.b64_json'] },
+          },
+        }],
+        profiles: [{
+          ...DEFAULT_SETTINGS.profiles[0],
+          id: 'custom-raw-base64-profile',
+          provider: 'custom-raw-base64',
+          baseUrl: 'https://api.example.com/v1',
+          apiKey: 'test-key',
+          model: 'model',
+        }],
+        activeProfileId: 'custom-raw-base64-profile',
+      },
+      prompt: 'prompt',
+      params: { ...DEFAULT_PARAMS },
+      inputImageDataUrls: ['data:image/png;base64,aW1hZ2Ux', 'data:image/jpeg;base64,aW1hZ2Uy'],
+    })
+
+    const body = JSON.parse(String((fetchMock.mock.calls[0][1] as RequestInit).body))
+    expect(body.image).toEqual(['aW1hZ2Ux', 'aW1hZ2Uy'])
+  })
+
+  it('submits reference image URLs for custom providers via $inputImages.urls', async () => {
+    const fetchMock = vi.spyOn(globalThis, 'fetch').mockImplementation(async () => new Response(JSON.stringify({
+      data: [{ b64_json: 'aW1hZ2U=' }],
+    }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    }))
+
+    await callImageApi({
+      settings: {
+        ...DEFAULT_SETTINGS,
+        customProviders: [{
+          id: 'custom-links',
+          name: 'Custom Links',
+          submit: {
+            path: 'images/generations',
+            body: { model: '$profile.model', prompt: '$prompt', image: '$inputImages.urls' },
+            result: { b64JsonPaths: ['data.*.b64_json'] },
+          },
+        }],
+        profiles: [{
+          ...DEFAULT_SETTINGS.profiles[0],
+          id: 'custom-links-profile',
+          provider: 'custom-links',
+          baseUrl: 'https://api.example.com/v1',
+          apiKey: 'test-key',
+          model: 'model',
+        }],
+        activeProfileId: 'custom-links-profile',
+      },
+      prompt: 'prompt',
+      params: { ...DEFAULT_PARAMS },
+      inputImageDataUrls: ['data:image/png;base64,aW1hZ2U=', 'data:image/png;base64,aW1hZ2Uy'],
+      inputImageUrls: ['https://cdn.example.com/a.png?e=1&token=x', 'https://oss.example.com/b.png'],
+    })
+
+    const body = JSON.parse(String((fetchMock.mock.calls[0][1] as RequestInit).body))
+    expect(body.image).toEqual([
+      'https://cdn.example.com/a.png?e=1&token=x',
+      'https://oss.example.com/b.png',
+    ])
+  })
+
+  it('omits the image field when there are no reference images', async () => {
+    const fetchMock = vi.spyOn(globalThis, 'fetch').mockImplementation(async () => new Response(JSON.stringify({
+      data: [{ b64_json: 'aW1hZ2U=' }],
+    }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    }))
+
+    await callImageApi({
+      settings: {
+        ...DEFAULT_SETTINGS,
+        customProviders: [{
+          id: 'custom-links',
+          name: 'Custom Links',
+          submit: {
+            path: 'images/generations',
+            body: { model: '$profile.model', prompt: '$prompt', image: '$inputImages.urls' },
+            result: { b64JsonPaths: ['data.*.b64_json'] },
+          },
+        }],
+        profiles: [{
+          ...DEFAULT_SETTINGS.profiles[0],
+          id: 'custom-links-profile',
+          provider: 'custom-links',
+          baseUrl: 'https://api.example.com/v1',
+          apiKey: 'test-key',
+          model: 'model',
+        }],
+        activeProfileId: 'custom-links-profile',
+      },
+      prompt: 'prompt',
+      params: { ...DEFAULT_PARAMS },
+      inputImageDataUrls: [],
+    })
+
+    const body = JSON.parse(String((fetchMock.mock.calls[0][1] as RequestInit).body))
+    expect(body.image).toBeUndefined()
+  })
+
+  it('rejects local reference images when the provider only accepts link references', async () => {
+    const fetchMock = vi.spyOn(globalThis, 'fetch')
+
+    await expect(callImageApi({
+      settings: {
+        ...DEFAULT_SETTINGS,
+        customProviders: [{
+          id: 'custom-links',
+          name: 'Custom Links',
+          submit: {
+            path: 'images/generations',
+            body: { model: '$profile.model', prompt: '$prompt', image: '$inputImages.urls' },
+            result: { b64JsonPaths: ['data.*.b64_json'] },
+          },
+        }],
+        profiles: [{
+          ...DEFAULT_SETTINGS.profiles[0],
+          id: 'custom-links-profile',
+          provider: 'custom-links',
+          baseUrl: 'https://api.example.com/v1',
+          apiKey: 'test-key',
+          model: 'model',
+        }],
+        activeProfileId: 'custom-links-profile',
+      },
+      prompt: 'prompt',
+      params: { ...DEFAULT_PARAMS },
+      inputImageDataUrls: ['data:image/png;base64,aW1hZ2U=', 'data:image/png;base64,aW1hZ2Uy'],
+      inputImageUrls: ['https://cdn.example.com/a.png', null],
+    })).rejects.toThrow('只接受链接参考图')
+
+    expect(fetchMock).not.toHaveBeenCalled()
+  })
+
+  it('treats $inputImages.urls as optional when the template also sends base64 images', async () => {
+    const fetchMock = vi.spyOn(globalThis, 'fetch').mockImplementation(async () => new Response(JSON.stringify({
+      data: [{ b64_json: 'aW1hZ2U=' }],
+    }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    }))
+
+    await callImageApi({
+      settings: {
+        ...DEFAULT_SETTINGS,
+        customProviders: [{
+          id: 'custom-mixed',
+          name: 'Custom Mixed',
+          submit: {
+            path: 'images/generations',
+            body: { model: '$profile.model', prompt: '$prompt', image: '$inputImages.base64', image_urls: '$inputImages.urls' },
+            result: { b64JsonPaths: ['data.*.b64_json'] },
+          },
+        }],
+        profiles: [{
+          ...DEFAULT_SETTINGS.profiles[0],
+          id: 'custom-mixed-profile',
+          provider: 'custom-mixed',
+          baseUrl: 'https://api.example.com/v1',
+          apiKey: 'test-key',
+          model: 'model',
+        }],
+        activeProfileId: 'custom-mixed-profile',
+      },
+      prompt: 'prompt',
+      params: { ...DEFAULT_PARAMS },
+      inputImageDataUrls: ['data:image/png;base64,aW1hZ2Ux', 'data:image/png;base64,aW1hZ2Uy'],
+      inputImageUrls: ['https://cdn.example.com/a.png', null],
+    })
+
+    const body = JSON.parse(String((fetchMock.mock.calls[0][1] as RequestInit).body))
+    expect(body.image).toEqual(['aW1hZ2Ux', 'aW1hZ2Uy'])
+    expect(body.image_urls).toEqual(['https://cdn.example.com/a.png'])
   })
 
   it('keeps Codex CLI async custom provider output count in one submitted task', async () => {

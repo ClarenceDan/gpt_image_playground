@@ -1,15 +1,23 @@
 import { describe, expect, it } from 'vitest'
 import { DEFAULT_PARAMS } from '../types'
 import { createDefaultFalProfile, createDefaultOpenAIProfile, DEFAULT_SETTINGS, normalizeSettings } from './apiProfiles'
-import {
-  DEFAULT_GIF_FRAME_COUNT,
-  DEFAULT_GIF_FRAME_DURATION_MS,
-  DEFAULT_GIF_IMAGE_SIZE,
-  getOutputImageLimitForSettings,
-  normalizeParamsForSettings,
-} from './paramCompatibility'
+import { getOutputImageLimitForSettings, getTaskParamSupport, normalizeParamsForSettings } from './paramCompatibility'
 
 describe('parameter compatibility', () => {
+  it.each([
+    ['gemini-nano-banana-2.1', true],
+    ['gemini-3-pro-image', false],
+    ['gemini-2.5-flash-image', false],
+  ])('captures supported Google controls for %s', (model, thinking) => {
+    const profile = createDefaultOpenAIProfile({ provider: 'google', model })
+    expect(getTaskParamSupport(DEFAULT_SETTINGS, profile)).toEqual({ thinking, complexity: false })
+  })
+
+  it.each(['gpt-image-2.5', 'gpt-image-2.6'])('uses the Responses image tool model for complexity: %s', (imageGenerationModel) => {
+    const profile = createDefaultOpenAIProfile({ apiMode: 'responses', model: 'example-text-model', imageGenerationModel })
+    expect(getTaskParamSupport(DEFAULT_SETTINGS, profile)).toEqual({ thinking: false, complexity: imageGenerationModel === 'gpt-image-2.6' })
+  })
+
   it('limits OpenAI output count to 10', () => {
     const openAIProfile = createDefaultOpenAIProfile({ apiKey: 'test-key', streamImages: false })
     const settings = normalizeSettings({
@@ -129,49 +137,6 @@ describe('parameter compatibility', () => {
 
     expect(normalizeParamsForSettings({ ...DEFAULT_PARAMS, quality: 'xhigh' }, settings).quality).toBe('xhigh')
     expect(normalizeParamsForSettings({ ...DEFAULT_PARAMS, quality: 'max' }, settings).quality).toBe('max')
-  })
-
-  it('applies GIF defaults for frame count, frame duration and size', () => {
-    const profile = createDefaultOpenAIProfile({ model: 'gpt-image-2.6-sunburst' })
-    const settings = normalizeSettings({ ...DEFAULT_SETTINGS, profiles: [profile] })
-
-    expect(normalizeParamsForSettings({ ...DEFAULT_PARAMS, output_format: 'gif' }, settings)).toMatchObject({
-      output_format: 'gif',
-      size: DEFAULT_GIF_IMAGE_SIZE,
-      frame_count: DEFAULT_GIF_FRAME_COUNT,
-      frame_duration_ms: DEFAULT_GIF_FRAME_DURATION_MS,
-      output_compression: null,
-      transparent_output: false,
-    })
-  })
-
-  it('clamps GIF frame params to the API ranges and rounds the duration to 10ms', () => {
-    const profile = createDefaultOpenAIProfile({ model: 'gpt-image-2.6-sunburst' })
-    const settings = normalizeSettings({ ...DEFAULT_SETTINGS, profiles: [profile] })
-
-    expect(normalizeParamsForSettings({ ...DEFAULT_PARAMS, output_format: 'gif', frame_count: 999 }, settings).frame_count).toBe(64)
-    expect(normalizeParamsForSettings({ ...DEFAULT_PARAMS, output_format: 'gif', frame_count: 1 }, settings).frame_count).toBe(2)
-    expect(normalizeParamsForSettings({ ...DEFAULT_PARAMS, output_format: 'gif', frame_duration_ms: 5 }, settings).frame_duration_ms).toBe(20)
-    expect(normalizeParamsForSettings({ ...DEFAULT_PARAMS, output_format: 'gif', frame_duration_ms: 9999 }, settings).frame_duration_ms).toBe(2000)
-    expect(normalizeParamsForSettings({ ...DEFAULT_PARAMS, output_format: 'gif', frame_duration_ms: 147 }, settings).frame_duration_ms).toBe(150)
-  })
-
-  it('drops GIF params and restores png when the model cannot output GIF', () => {
-    const profile = createDefaultOpenAIProfile({ model: 'gpt-image-2.5-sunburst' })
-    const settings = normalizeSettings({ ...DEFAULT_SETTINGS, profiles: [profile] })
-
-    expect(normalizeParamsForSettings({ ...DEFAULT_PARAMS, output_format: 'gif', frame_count: 12, frame_duration_ms: 150 }, settings)).toMatchObject({
-      output_format: 'png',
-      frame_count: null,
-      frame_duration_ms: null,
-    })
-  })
-
-  it('falls back to png when GIF is requested with input images', () => {
-    const profile = createDefaultOpenAIProfile({ model: 'gpt-image-2.6-sunburst' })
-    const settings = normalizeSettings({ ...DEFAULT_SETTINGS, profiles: [profile] })
-
-    expect(normalizeParamsForSettings({ ...DEFAULT_PARAMS, output_format: 'gif' }, settings, { hasInputImages: true }).output_format).toBe('png')
   })
 
   it('falls back to high when an older image model receives a 2.5 quality level', () => {

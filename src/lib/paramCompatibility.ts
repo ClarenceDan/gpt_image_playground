@@ -1,17 +1,14 @@
-import { DEFAULT_PARAMS, type AppSettings, type TaskParams } from '../types'
-import { getActiveApiProfile, isOpenAICompatibleProvider } from './apiProfiles'
-import { getImageGenerationModel, supportsExtendedQuality, supportsGifOutput } from './imageModels'
+import { DEFAULT_PARAMS, type ApiProfile, type AppSettings, type ParamDisabledReasons, type TaskParams } from '../types'
+import { getActiveApiProfile, getCustomProviderDefinition, isOpenAICompatibleProvider } from './apiProfiles'
+import { customProviderSupportsNativeTransparentBackground } from './customProviderCapabilities'
+import { getImageModelFamily, isGptImage26PlusModel, isVectorOrAnimatedFormat, supportsExtendedQuality, supportsGptImage26Params } from './imageModels'
+import { getImageModelParams, getSeedreamSize } from './imageModelParams'
+import { getImageSearchSupport, getImageThinkingSupport } from './imageSearch'
 import { normalizeCodexCliImageSize, normalizeImageSize } from './size'
 
 export const DEFAULT_FAL_IMAGE_SIZE = '1360x1024'
 export const MAX_FAL_OUTPUT_IMAGES = 4
 export const MAX_OPENAI_OUTPUT_IMAGES = 10
-export const GIF_MIN_FRAME_COUNT = 2
-export const GIF_MAX_FRAME_COUNT = 64
-export const GIF_MIN_FRAME_DURATION_MS = 20
-export const GIF_MAX_FRAME_DURATION_MS = 2000
-export const DEFAULT_GIF_FRAME_COUNT = 9
-export const DEFAULT_GIF_FRAME_DURATION_MS = 200
 /** GIF 单帧默认尺寸：9 帧合计约 722 万像素，落在 829 万的总像素预算内 */
 export const DEFAULT_GIF_IMAGE_SIZE = '896x896'
 /** OpenAI 对单次请求的总像素预算上限（与尺寸约束一致） */
@@ -23,33 +20,62 @@ function getGifTotalPixels(size: string, frameCount: number) {
   return Number(match[1]) * Number(match[2]) * frameCount
 }
 
+export function getTaskParamSupport(settings: AppSettings, profile: ApiProfile) {
+  const provider = getCustomProviderDefinition(settings, profile.provider)
+  return {
+    thinking: getImageThinkingSupport(profile, provider).levels.length > 0,
+    complexity: !getImageModelFamily(profile) && supportsGptImage26Params(profile),
+  }
+}
+
 export function getOutputImageLimitForSettings(settings: AppSettings) {
-  return getActiveApiProfile(settings).provider === 'fal' ? MAX_FAL_OUTPUT_IMAGES : MAX_OPENAI_OUTPUT_IMAGES
+  const profile = getActiveApiProfile(settings)
+  if (getImageModelFamily(profile) === 'seedream') return 1
+  return profile.provider === 'fal' ? MAX_FAL_OUTPUT_IMAGES : MAX_OPENAI_OUTPUT_IMAGES
 }
 
 export function normalizeParamsForSettings(
   params: TaskParams,
   settings: AppSettings,
-  options: { hasInputImages?: boolean } = {},
+  options: { hasInputImages?: boolean; agent?: boolean } = {},
 ): TaskParams {
   const activeProfile = getActiveApiProfile(settings)
   const outputImageLimit = getOutputImageLimitForSettings(settings)
   const nextParams: TaskParams = {
     ...params,
     size: normalizeImageSize(params.size) || DEFAULT_PARAMS.size,
+    aspect_ratio: undefined,
+    resolution: undefined,
+    google_search: undefined,
+    image_search: undefined,
+    thinking_level: undefined,
+    background: undefined,
+    watermark: undefined,
     n: Math.min(outputImageLimit, Math.max(1, params.n || DEFAULT_PARAMS.n)),
   }
 
-  // GIF 只在 Images 生成接口可用，编辑请求和不支持的模型回退为 png
-  if (nextParams.output_format === 'gif' && (options.hasInputImages || !supportsGifOutput(activeProfile))) {
-    nextParams.output_format = 'png'
-  }
-  if (nextParams.output_format !== 'gif') {
-    nextParams.frame_count = null
-    nextParams.frame_duration_ms = null
-  } else {
-    // GIF 不支持透明背景
-    nextParams.transparent_output = false
+  if (getImageModelFamily(activeProfile)) {
+    const modelParams = getImageModelParams(activeProfile, params)
+    const search = getImageSearchSupport(activeProfile, getCustomProviderDefinition(settings, activeProfile.provider))
+    const thinking = getImageThinkingSupport(activeProfile, getCustomProviderDefinition(settings, activeProfile.provider))
+    if (getImageModelFamily(activeProfile) === 'seedream') {
+      const background = options.agent ? 'auto' : params.background ?? 'auto'
+      return {
+        ...nextParams, ...modelParams,
+        size: getSeedreamSize(activeProfile, params), quality: 'auto',
+        watermark: params.watermark ?? false,
+        background, transparent_output: background === 'transparent',
+        output_format: params.output_format === 'jpeg' && background !== 'transparent' ? 'jpeg' : 'png',
+        output_compression: null, moderation: 'auto', complexity: 'auto',
+      }
+    }
+    return {
+      ...nextParams, ...modelParams,
+      google_search: search.googleSearch ? undefined : params.google_search,
+      image_search: search.imageSearch ? undefined : params.image_search,
+      thinking_level: thinking.levels.includes(params.thinking_level ?? '') ? params.thinking_level : undefined,
+      size: 'auto', quality: modelParams.quality ?? 'auto', output_format: 'png', output_compression: null, moderation: 'auto', complexity: 'auto',
+    }
   }
 
   if (isOpenAICompatibleProvider(settings, activeProfile.provider) && activeProfile.codexCli) {
@@ -58,40 +84,64 @@ export function normalizeParamsForSettings(
   }
 
   if (activeProfile.provider === 'fal') {
-    if (!options.hasInputImages && nextParams.size === 'auto') nextParams.size = DEFAULT_FAL_IMAGE_SIZE
-    if (nextParams.quality === 'auto') nextParams.quality = 'high'
     nextParams.moderation = DEFAULT_PARAMS.moderation
     nextParams.output_compression = DEFAULT_PARAMS.output_compression
   }
 
-  if ((nextParams.quality === 'xhigh' || nextParams.quality === 'max') && !supportsExtendedQuality(getImageGenerationModel(activeProfile))) {
-    nextParams.quality = 'high'
+  const disabled = getParamDisabledReasons(activeProfile, options)
+  if (disabled.autoSize && nextParams.size === 'auto') nextParams.size = DEFAULT_FAL_IMAGE_SIZE
+  if (disabled.autoQuality && nextParams.quality === 'auto') nextParams.quality = 'high'
+  if (disabled.extendedQuality && (nextParams.quality === 'xhigh' || nextParams.quality === 'max')) nextParams.quality = 'high'
+  if (disabled.complexity) nextParams.complexity = DEFAULT_PARAMS.complexity
+  const format = nextParams.output_format
+  if ((format === 'svg' || format === 'gif') && disabled[format]) nextParams.output_format = DEFAULT_PARAMS.output_format
+
+  // GIF 帧尺寸受总像素预算限制，auto 或超出预算的特大尺寸改用更适合多帧的小尺寸
+  if (nextParams.output_format === 'gif' && (nextParams.size === 'auto' || getGifTotalPixels(nextParams.size, nextParams.frame_count) > GIF_MAX_TOTAL_PIXELS)) {
+    nextParams.size = DEFAULT_GIF_IMAGE_SIZE
   }
 
-  if (nextParams.frame_count != null) {
-    nextParams.frame_count = Math.min(GIF_MAX_FRAME_COUNT, Math.max(GIF_MIN_FRAME_COUNT, Math.round(nextParams.frame_count)))
-  }
-  if (nextParams.frame_duration_ms != null) {
-    nextParams.frame_duration_ms = Math.min(
-      GIF_MAX_FRAME_DURATION_MS,
-      Math.max(GIF_MIN_FRAME_DURATION_MS, Math.round(nextParams.frame_duration_ms / 10) * 10),
-    )
-  }
+  // fal.ai 生成 SVG 时只能一张，且只有一个队列请求，无法像 OpenAI 那样拆成并发单张
+  // if (activeProfile.provider === 'fal' && nextParams.output_format === 'svg') nextParams.n = 1
 
-  if (nextParams.output_format === 'gif') {
-    nextParams.frame_count = nextParams.frame_count ?? DEFAULT_GIF_FRAME_COUNT
-    nextParams.frame_duration_ms = nextParams.frame_duration_ms ?? DEFAULT_GIF_FRAME_DURATION_MS
-    // GIF 帧尺寸受总像素预算限制，auto 或超出预算的特大尺寸改用更适合多帧的小尺寸
-    if (nextParams.size === 'auto' || getGifTotalPixels(nextParams.size, nextParams.frame_count) > GIF_MAX_TOTAL_PIXELS) {
-      nextParams.size = DEFAULT_GIF_IMAGE_SIZE
-    }
-  }
-
-  if (nextParams.output_format === 'png' || nextParams.output_format === 'gif') {
+  if (nextParams.output_format === 'png' || isVectorOrAnimatedFormat(nextParams.output_format)) {
     nextParams.output_compression = DEFAULT_PARAMS.output_compression
   }
 
   return nextParams
+}
+
+/** 参数面板中不可选的项及原因；normalizeParamsForSettings 按同一结果清洗参数 */
+export function getParamDisabledReasons(profile: ApiProfile, options: { hasInputImages?: boolean; agent?: boolean } = {}): ParamDisabledReasons {
+  const isFal = profile.provider === 'fal'
+  // Responses API 的能力取决于 image_generation 工具的图像模型，而不是首页选择的文本模型
+  const isResponses = profile.provider === 'openai' && profile.apiMode === 'responses'
+  const gptImage26 = supportsGptImage26Params(profile)
+  const gif = options.agent
+    // Agent 的图片会进入对话上下文继续编辑，只用位图格式
+    ? 'Agent 模式只能输出位图格式'
+    : gptImage26 ? undefined
+    : isResponses ? '当前图像模型不支持此格式' : '当前模型不支持此格式'
+  return {
+    complexity: gptImage26 ? undefined
+      : isResponses ? '当前图像模型不支持复杂度参数' : '当前模型不支持复杂度参数',
+    gif,
+    // fal.ai 的 SVG 暂不开放，原因见 falAiImageApi 中的说明
+    svg: gif ?? (isFal ? 'fal.ai 暂不支持此格式' : undefined),
+    autoQuality: isFal ? 'fal.ai 不支持 auto 质量参数' : undefined,
+    extendedQuality: supportsExtendedQuality(profile) ? undefined
+      : isFal && isGptImage26PlusModel(profile.model) ? 'fal.ai 的 GPT Image 2.6 最高只支持 high'
+      : isResponses ? '当前图像模型不支持此质量' : '当前模型不支持此质量',
+    autoSize: isFal && !options.hasInputImages ? 'fal.ai 的文生图模式不支持自动尺寸' : undefined,
+  }
+}
+
+/** 透明背景：JPEG 不支持；SVG 和 GIF 无法本地抠图，需要接口原生透明背景，未映射 $params.background 的自定义服务商不可用 */
+export function supportsTransparentOutput(settings: AppSettings, profile: ApiProfile, format: TaskParams['output_format']) {
+  if (format === 'jpeg') return false
+  if (!isVectorOrAnimatedFormat(format)) return true
+  const customProvider = getCustomProviderDefinition(settings, profile.provider)
+  return !customProvider || customProviderSupportsNativeTransparentBackground(customProvider, profile.model)
 }
 
 export function getChangedParams(current: TaskParams, next: TaskParams): Partial<TaskParams> {

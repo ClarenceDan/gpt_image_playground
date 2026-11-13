@@ -1,3 +1,4 @@
+import { shouldReturnBase64 } from './apiProfiles'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import {
   DEFAULT_FAL_BASE_URL,
@@ -19,6 +20,8 @@ import {
   mergeImportedSettings,
   normalizeApiProfile,
   normalizeSettings,
+  resolveApiProfileModel,
+  splitModelList,
   switchApiProfileProvider,
   validateApiProfile,
 } from './apiProfiles'
@@ -79,6 +82,24 @@ describe('normalizeApiProfile', () => {
 })
 
 describe('normalizeSettings', () => {
+  it('falls back to creating a new task for unknown retry modes', () => {
+    expect(normalizeSettings({}).retryMode).toBe('new')
+    expect(normalizeSettings({ retryMode: 'bogus' }).retryMode).toBe('new')
+    expect(normalizeSettings({ retryMode: 'overwriteFailed' }).retryMode).toBe('overwriteFailed')
+  })
+
+  it('only keeps overwriting any task while successful tasks show the retry button', () => {
+    expect(normalizeSettings({ retryMode: 'overwriteAll' }).retryMode).toBe('overwriteFailed')
+    expect(normalizeSettings({ retryMode: 'overwriteAll', alwaysShowRetryButton: true }).retryMode).toBe('overwriteAll')
+  })
+
+  it('defaults the save location mode to asking and drops invalid values', () => {
+    expect(DEFAULT_SETTINGS.saveLocationMode).toBe('ask')
+    expect(normalizeSettings({}).saveLocationMode).toBe('ask')
+    expect(normalizeSettings({ saveLocationMode: 'bogus' }).saveLocationMode).toBe('ask')
+    expect(normalizeSettings({ saveLocationMode: 'default' }).saveLocationMode).toBe('default')
+  })
+
   it('preserves a non-empty profile description and removes an empty one', () => {
     const settings = normalizeSettings({
       profiles: [
@@ -89,6 +110,32 @@ describe('normalizeSettings', () => {
 
     expect(settings.profiles[0].description).toBe('支持 **Markdown**')
     expect(settings.profiles[1].description).toBeUndefined()
+  })
+
+  it('keeps valid color modes and falls back to following the system', () => {
+    expect(normalizeSettings({ enterSubmit: true }).colorMode).toBe('system')
+    expect(normalizeSettings({ colorMode: 'light' }).colorMode).toBe('light')
+    expect(normalizeSettings({ colorMode: 'dark' }).colorMode).toBe('dark')
+    expect(normalizeSettings({ colorMode: 'bogus' }).colorMode).toBe('system')
+  })
+
+  it('defaults font settings to following the deployment for old data', () => {
+    const settings = normalizeSettings({ enterSubmit: true })
+
+    expect(settings.uiFont).toBe('default')
+    expect(settings.uiFontName).toBe('')
+    expect(settings.monoFont).toBe('default')
+    expect(settings.monoFontName).toBe('')
+  })
+
+  it('keeps valid font settings and drops invalid ones', () => {
+    const settings = normalizeSettings({ uiFont: 'custom', uiFontName: '  Source Han Sans SC ', monoFont: 'bogus', monoFontName: 42 })
+
+    expect(settings.uiFont).toBe('custom')
+    expect(settings.uiFontName).toBe('Source Han Sans SC')
+    expect(settings.monoFont).toBe('default')
+    expect(settings.monoFontName).toBe('')
+    expect(normalizeSettings({ monoFont: 'builtin' }).monoFont).toBe('builtin')
   })
 })
 
@@ -668,6 +715,21 @@ describe('mergePresetImportedSettings', () => {
 
     expect(merged.profiles[0]).toMatchObject({ id: 'source-profile', model: 'model-v2' })
     expect(merged.customProviders[0]).toMatchObject({ id: 'source-provider', submit: { path: 'v2/generate' } })
+  })
+
+  it('syncs a changed SVG authoring model from the deployment', () => {
+    const withSvgModel = (svgModel: string) => {
+      const config = createConfig('model-v1', 'old/generate')
+      return { ...config, profiles: [{ ...config.profiles[0], provider: 'openai', svgModel }], customProviders: [] }
+    }
+    const initial = mergeDefaultImportedSettings(DEFAULT_SETTINGS, withSvgModel('svg-v1'))
+    expect(initial.settings.profiles[0].svgModel).toBe('svg-v1')
+
+    const unlocked = mergeDefaultImportedSettings(initial.settings, withSvgModel('svg-v2'), { previousPresetConfig: initial.presetConfig })
+    expect(unlocked.settings.profiles[0].svgModel).toBe('svg-v2')
+
+    const locked = mergeDefaultImportedSettings(unlocked.settings, withSvgModel('svg-v3'), { previousPresetConfig: unlocked.presetConfig, lockPresetParams: true })
+    expect(locked.settings.profiles[0].svgModel).toBe('svg-v3')
   })
 
   it('keeps the local API key while updating other locked preset parameters', () => {
@@ -1602,7 +1664,7 @@ describe('custom providers', () => {
       ],
     })
 
-    expect(settings.providerOrder).toEqual(['fal', 'openai', 'sb2api-async', 'custom-alpha', 'custom-beta'])
+    expect(settings.providerOrder).toEqual(['fal', 'openai', 'google', 'xai', 'bytedance', 'sb2api-async', 'custom-alpha', 'custom-beta'])
   })
 
   it('keeps active custom providers in Images API mode when legacy apiMode is responses', () => {
@@ -1662,6 +1724,12 @@ describe('custom providers', () => {
     expect(normalizeSettings({ allowPromptRewrite: true }).allowPromptRewrite).toBe(true)
   })
 
+  it('defaults imagePromptHints to true and preserves explicit false', () => {
+    expect(DEFAULT_SETTINGS.imagePromptHints).toBe(true)
+    expect(normalizeSettings({}).imagePromptHints).toBe(true)
+    expect(normalizeSettings({ imagePromptHints: false }).imagePromptHints).toBe(false)
+  })
+
   it('restores OpenAI-compatible URL after switching through fal.ai', () => {
     const openaiProfile = createDefaultOpenAIProfile({
       baseUrl: 'https://api.compat.example.com/v1',
@@ -1677,4 +1745,64 @@ describe('custom providers', () => {
     expect(restoredProfile.model).toBe('custom-openai-model')
     expect(restoredProfile.apiProxy).toBe(false)
   })
+})
+
+describe('model list', () => {
+  it('normalizes comma separated models', () => {
+    expect(splitModelList('a,b ，c, a,')).toEqual(['a', 'b', 'c'])
+    expect(normalizeApiProfile({ model: 'a,b ，c' }).model).toBe('a, b, c')
+  })
+
+  it('resolves selected model and falls back to the first one', () => {
+    const profile = normalizeApiProfile({ model: 'a, b', selectedModel: 'b' })
+    expect(resolveApiProfileModel(profile).model).toBe('b')
+    expect(resolveApiProfileModel(profile, 'a').model).toBe('a')
+    expect(resolveApiProfileModel({ ...profile, selectedModel: 'x' }).model).toBe('a')
+  })
+
+  it('returns the selected model for the active profile', () => {
+    const profile = normalizeApiProfile({ id: 'p1', model: 'a,b', selectedModel: 'b' })
+    expect(getActiveApiProfile({ profiles: [profile], activeProfileId: 'p1' }).model).toBe('b')
+  })
+})
+
+
+describe('native provider Base64 defaults', () => {
+  it.each(['xai', 'bytedance'] as const)('enables Base64 for a new %s configuration without leaking into other providers', (provider) => {
+    const profile = switchApiProfileProvider(createDefaultOpenAIProfile(), provider)
+    expect(shouldReturnBase64(profile)).toBe(true)
+    expect(switchApiProfileProvider(profile, 'openai').responseFormatB64Json).toBeUndefined()
+    expect(switchApiProfileProvider(profile, 'custom-test', { id: 'custom-test', name: '测试', submit: { path: 'images/generations' } }).responseFormatB64Json).toBeUndefined()
+    const disabled = normalizeApiProfile({ ...profile, responseFormatB64Json: false })
+    const other = switchApiProfileProvider(disabled, 'openai')
+    expect(switchApiProfileProvider(other, provider).responseFormatB64Json).toBeFalsy()
+  })
+})
+
+it('defaults Base64 by official domain and preserves explicit choices', () => {
+  for (const baseUrl of ['https://api.x.ai/v1', 'https://ark.cn-beijing.volces.com/api/v3', 'https://ark.ap-southeast.bytepluses.com/api/v3', 'https://ark.eu-west.bytepluses.com/api/v3']) {
+    expect(shouldReturnBase64({ baseUrl })).toBe(true)
+    expect(shouldReturnBase64(normalizeApiProfile({ baseUrl, responseFormatB64Json: false }))).toBe(false)
+  }
+  for (const baseUrl of ['https://example.com/v1', 'https://api.x.ai.example.com/v1', 'https://fakevolces.com', 'https://bytepluses.com.example.org', 'invalid']) {
+    expect(shouldReturnBase64({ baseUrl })).toBe(false)
+  }
+})
+
+it('keeps automatic defaults and explicit choices distinct across repeated URL changes and reloads', () => {
+  for (const choice of [undefined, true, false]) {
+    let profile = createDefaultOpenAIProfile({ responseFormatB64Json: choice })
+    for (const [baseUrl, automatic] of [
+      ['https://example.com/v1', false],
+      ['https://ark.eu-west.bytepluses.com/api/v3', true],
+      ['https://other.example.com/v1', false],
+      ['https://api.x.ai/v1', true],
+      ['', false],
+      ['https://ark.cn-beijing.volces.com/api/v3', true],
+    ] as const) {
+      profile = normalizeApiProfile(JSON.parse(JSON.stringify({ ...profile, baseUrl })))
+      expect(profile.responseFormatB64Json).toBe(choice)
+      expect(shouldReturnBase64(profile)).toBe(choice ?? automatic)
+    }
+  }
 })
