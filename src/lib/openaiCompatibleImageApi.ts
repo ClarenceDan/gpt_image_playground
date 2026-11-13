@@ -480,7 +480,7 @@ async function callModelImagesApi(opts: CallApiOptions, profile: ApiProfile): Pr
     delete body.n
     body.watermark = opts.params.watermark ?? false
     body.size = getSeedreamSize(profile, opts.params)
-    body.background = opts.params.background === 'transparent' && profile.transparentBackgroundMethod === 'local' ? 'opaque' : opts.params.background ?? 'auto'
+    body.background = opts.params.background === 'transparent' && profile.transparentBackgroundMethod === 'local' ? 'opaque' : opts.params.background === 'transparent' ? 'transparent' : 'opaque'
     body.output_format = opts.params.output_format === 'jpeg' && body.background !== 'transparent' ? 'jpeg' : 'png'
     if (isEdit) body.image = opts.inputImageDataUrls
   } else if (family === 'gemini') {
@@ -805,7 +805,7 @@ function createCustomProviderContext(opts: CallApiOptions, profile: ApiProfile) 
   const modelParams = getImageModelFamily(profile) ? getImageModelParams(profile, opts.params) : null
   const seedreamParams = getImageModelFamily(profile) === 'seedream' ? {
     watermark: opts.params.watermark ?? false,
-    background: opts.params.background === 'transparent' && profile.transparentBackgroundMethod === 'local' ? 'opaque' : opts.params.background ?? 'auto',
+    background: opts.params.background === 'transparent' && profile.transparentBackgroundMethod === 'local' ? 'opaque' : opts.params.background === 'transparent' ? 'transparent' : 'opaque',
     aspect_ratio: modelParams?.aspect_ratio === 'custom' ? undefined : modelParams?.aspect_ratio,
     size: getSeedreamSize(profile, opts.params),
     output_format: opts.params.output_format === 'jpeg' && opts.params.background !== 'transparent' ? 'jpeg' : 'png',

@@ -59,7 +59,8 @@ export function normalizeParamsForSettings(
     const search = getImageSearchSupport(activeProfile, getCustomProviderDefinition(settings, activeProfile.provider))
     const thinking = getImageThinkingSupport(activeProfile, getCustomProviderDefinition(settings, activeProfile.provider))
     if (getImageModelFamily(activeProfile) === 'seedream') {
-      const background = options.agent ? 'auto' : params.background ?? 'auto'
+      // Seedream 只接受 opaque 或 transparent，auto 会直接报错，默认不透明
+      const background = params.background === 'transparent' ? 'transparent' : 'opaque'
       return {
         ...nextParams, ...modelParams,
         size: getSeedreamSize(activeProfile, params), quality: 'auto',

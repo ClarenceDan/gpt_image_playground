@@ -21,7 +21,8 @@ describe('Seedream 5.5', () => {
       await callImageApi({ settings, prompt: '测试', params, inputImageDataUrls: [], nativeTransparentBackground: params.transparent_output })
       const body = JSON.parse(String(fetchMock.mock.calls[fetchMock.mock.calls.length - 1][1]?.body))
       expect(body.watermark).toBe(false)
-      expect(body.background).toBe(background)
+      // Seedream 不接受 auto，未选择透明时发送 opaque
+      expect(body.background).toBe(background === 'transparent' ? 'transparent' : 'opaque')
       expect(body.output_format).toBe(background === 'transparent' ? 'png' : 'jpeg')
     }
   })

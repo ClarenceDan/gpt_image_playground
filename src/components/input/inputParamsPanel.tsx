@@ -494,11 +494,11 @@ export default function InputParamsPanel({
           {transparentOutputAvailable && (
             <div className="max-sm:flex-auto sm:shrink-0">
               <Select
-                value={params.background ?? 'auto'}
+                value={params.background === 'transparent' ? 'transparent' : 'opaque'}
                 onChange={(val) => setParams({ background: val as TaskParams['background'], transparent_output: val === 'transparent' })}
-                options={(['auto', 'transparent', 'opaque'] as const)
+                options={(['transparent', 'opaque'] as const)
                   .filter((value) => params.output_format !== 'jpeg' || value !== 'transparent')
-                  .map((value) => ({ label: value === 'auto' ? '自动' : value === 'transparent' ? '透明' : '不透明', value }))}
+                  .map((value) => ({ label: value === 'transparent' ? '透明' : '不透明', value }))}
                 prefix={prefix('背景')}
                 className={CHIP_CLASS}
                 onOpenChange={onTransparentOutputMenuOpenChange}

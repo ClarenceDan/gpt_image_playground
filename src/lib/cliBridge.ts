@@ -156,7 +156,7 @@ function parseParams(args: Record<string, unknown>, profile = getActiveApiProfil
     patch.watermark = args.watermark
   }
   if (args.background !== undefined && getImageModelFamily(profile) === 'seedream') {
-    if (args.background !== 'auto' && args.background !== 'transparent' && args.background !== 'opaque') throw new Error('background 只能是 auto、transparent、opaque')
+    if (args.background !== 'transparent' && args.background !== 'opaque') throw new Error('background 只能是 transparent 或 opaque')
     patch.background = args.background
     patch.transparent_output = args.background === 'transparent'
   }

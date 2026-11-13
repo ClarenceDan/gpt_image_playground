@@ -173,24 +173,6 @@ export function maybeAppendStreamingHint(message: string, status: number, stream
   return appendStreamingUnsupportedHint(message)
 }
 
-async function probeNoCorsReachability(url: string, timeoutMs = 8000): Promise<'opaque' | 'reachable' | 'failed'> {
-  const controller = new AbortController()
-  const timeoutId = setTimeout(() => controller.abort(), timeoutMs)
-  try {
-    const response = await fetch(url, {
-      method: 'GET',
-      mode: 'no-cors',
-      cache: 'no-store',
-      signal: controller.signal,
-    })
-    return response.type === 'opaque' ? 'opaque' : 'reachable'
-  } catch {
-    return 'failed'
-  } finally {
-    clearTimeout(timeoutId)
-  }
-}
-
 export async function fetchImageBlobViaProxy(url: string, signal?: AbortSignal): Promise<Blob | null> {
   if (!isHttpUrl(url)) return null
   try {
@@ -224,14 +206,11 @@ export async function fetchImageUrlAsDataUrl(url: string, fallbackMime: string, 
         if (proxiedBlob) return blobToDataUrl(proxiedBlob, fallbackMime)
       }
       if (isTauri) throw new Error(`图片链接下载失败（可能因链接过期或网络异常）。${IMAGE_FETCH_CORS_HINT}`)
-      const probe = await probeNoCorsReachability(url)
-      if (probe === 'opaque') {
-        throw new Error(`图片已生成，但因服务商未允许跨域，图片链接下载失败。${IMAGE_FETCH_CORS_HINT}`)
-      }
+      // no-cors 探测只能确认链接是否可达，区分不了跨域拦截和其他失败，统一提示跨域原因并引导复制链接
       if (typeof navigator !== 'undefined' && navigator.onLine === false) {
         throw new Error(`图片链接下载失败（网络不可用）。${IMAGE_FETCH_CORS_HINT}`)
       }
-      throw new Error(`图片链接下载失败（可能因跨域限制、链接过期或网络异常）。${IMAGE_FETCH_CORS_HINT}`)
+      throw new Error(`图片已生成，但因服务商未允许跨域，图片链接下载失败。${IMAGE_FETCH_CORS_HINT}`)
     }
     throw err
   }
