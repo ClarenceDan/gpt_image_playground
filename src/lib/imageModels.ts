@@ -1,8 +1,18 @@
 import type { ApiProfile } from '../types'
 
-export const DEFAULT_IMAGES_MODEL = 'gpt-image-2.6-sunburst'
+export const DEFAULT_IMAGES_MODEL = 'gpt-image-2.6'
 /** Images API 生成 SVG 时必填的 svg.model（负责编写 SVG 的文本模型） */
 export const DEFAULT_SVG_MODEL = 'gpt-6.1-sol'
+
+/**
+ * 首页模型切换器的内置预设，按服务商分组。
+ * 模型 ID 取自 MoleAPI 模型广场中实际可用的图像模型，并与本应用的参数识别规则对齐。
+ */
+export const IMAGE_MODEL_PRESETS: Array<{ group: string; models: string[] }> = [
+  { group: 'GPT Image', models: ['gpt-image-2.6', 'gpt-image-2.6-sunburst', 'gpt-image-2.6-flare', 'gpt-image-2.5', 'gpt-image-2.5-sunburst', 'gpt-image-2.5-flare', 'gpt-image-2'] },
+  { group: 'Gemini', models: ['gemini-3.1-flash-image', 'gemini-3-pro-image', 'gemini-2.5-flash-image', 'gemini-nano-banana-2.1'] },
+  { group: 'Seedream', models: ['doubao-seedream-5-5-261028'] },
+]
 
 export function getImageModelFamily(profile: Pick<ApiProfile, 'provider' | 'apiMode' | 'model'>): 'gemini' | 'grok' | 'seedream' | null {
   if (profile.provider === 'openai' && profile.apiMode === 'responses') return null

@@ -4,7 +4,7 @@ import { deleteFavoriteCollection, useStore, submitTask, submitAgentMessage, sto
 import { DEFAULT_PARAMS, MAX_INPUT_IMAGES, type TaskRecord } from '../types'
 import { getActiveAgentRounds } from '../lib/agentConversationState'
 import { createSettingsForApiProfile, getCustomProviderDefinition, getActiveApiProfile, getAgentImageApiProfile, resolveApiProfileModel, splitModelList } from '../lib/apiProfiles'
-import { getImageModelFamily, isVectorOrAnimatedFormat } from '../lib/imageModels'
+import { getImageModelFamily, IMAGE_MODEL_PRESETS, isVectorOrAnimatedFormat } from '../lib/imageModels'
 import { getImageSearchSupport, getImageThinkingSupport } from '../lib/imageSearch'
 import { ensureImageCached, getCachedImage } from '../lib/imageCache'
 import { toReferenceImage } from '../lib/inputImages'
@@ -451,10 +451,12 @@ export default function InputBar() {
     return reusedProfile ? resolveApiProfileModel(reusedProfile, reusedTaskApiModel ?? undefined, getCustomProviderDefinition(settings, reusedProfile.provider)) : currentActiveProfile
   }, [appMode, currentActiveProfile, reusedTaskApiModel, reusedTaskApiProfileId, settings])
   const isTemporarilyReusedProfile = activeProfile.id !== currentActiveProfile.id
-  const modelOptions = useMemo(() => (
-    splitModelList(settings.profiles.find((profile) => profile.id === activeProfile.id)?.model ?? activeProfile.model)
-      .map((model) => ({ label: model, value: model }))
-  ), [activeProfile.id, activeProfile.model, settings.profiles])
+  const modelOptions = useMemo(() => {
+    const configured = splitModelList(settings.profiles.find((profile) => profile.id === activeProfile.id)?.model ?? activeProfile.model)
+    // 内置预设始终可选；配置里额外填写的模型排在前面
+    const presets = IMAGE_MODEL_PRESETS.flatMap((group) => group.models)
+    return Array.from(new Set([...configured, ...presets])).map((model) => ({ label: model, value: model }))
+  }, [activeProfile.id, activeProfile.model, settings.profiles])
   const handleModelChange = useCallback((model: string) => {
     // 临时复用其他配置时只切换本次复用的模型，不改动该配置记住的选择
     if (isTemporarilyReusedProfile) {

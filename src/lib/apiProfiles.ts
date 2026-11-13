@@ -23,7 +23,7 @@ import { shouldUseApiProxy } from './devProxy'
 import { normalizeReasoningEffort, normalizeStreamPartialImages, parseDefaultApiUrl } from './defaultApiUrl'
 import { readRuntimeEnv } from './runtimeEnv'
 import { isImportableConfigUrl } from './importableConfigUrl'
-import { DEFAULT_IMAGES_MODEL, getImageModelFamily } from './imageModels'
+import { DEFAULT_IMAGES_MODEL, getImageModelFamily, IMAGE_MODEL_PRESETS } from './imageModels'
 import { DEFAULT_BATCH_PROMPT_CONCURRENCY, normalizeBatchPromptConcurrency } from './batchPrompts'
 import { normalizeFontMode } from './fonts'
 import { DEFAULT_PRIVACY_MODE_SHORTCUT, normalizeShortcutSetting } from './keyboardShortcut'
@@ -952,7 +952,12 @@ export function normalizeModelList(value: string) {
 /** 将模型列表解析为实际请求使用的单个模型，优先使用 preferred，其次是首页选中的模型 */
 export function resolveApiProfileModel(profile: ApiProfile, preferred?: string, customProvider?: CustomProviderDefinition | null): ApiProfile {
   const models = splitModelList(profile.model)
-  const model = [preferred, profile.selectedModel].find((item) => item && models.includes(item)) ?? models[0] ?? profile.model
+  const presets = IMAGE_MODEL_PRESETS.flatMap((group) => group.models)
+  const selectable = new Set([...models, ...presets])
+  // preferred 是调用方显式指定的模型，无条件生效；首页选中的模型需要在配置列表或内置预设中
+  const model = preferred
+    ?? (profile.selectedModel && selectable.has(profile.selectedModel) ? profile.selectedModel : undefined)
+    ?? models[0] ?? profile.model
   const resolved = { ...profile, model }
   const family = getImageModelFamily(resolved)
   if (family) {
@@ -996,7 +1001,7 @@ export function createSettingsForApiProfile(settings: AppSettings, profile: ApiP
     apiMode: profile.apiMode,
     codexCli: profile.codexCli,
     apiProxy: profile.apiProxy,
-    profiles: normalized.profiles.map((item) => item.id === profile.id ? profile : item),
+    profiles: normalized.profiles.map((item) => item.id === profile.id ? { ...profile, selectedModel: profile.model } : item),
     activeProfileId: profile.id,
   })
 }
