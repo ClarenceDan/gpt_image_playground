@@ -5,9 +5,11 @@ import { isTauri } from '../../lib/platform'
 import { getImageModelFamily, supportsGrokQuality } from '../../lib/imageModels'
 import { getImageModelOptions, getImageModelParams } from '../../lib/imageModelParams'
 import { getImageSearchSupport, getImageThinkingSupport } from '../../lib/imageSearch'
+import type { ApiProfileModelGroup } from '../../lib/apiProfiles'
 import { useHintTooltip } from '../../hooks/useHintTooltip'
 import { dismissAllTooltips } from '../../lib/tooltipDismiss'
 import Select, { type SelectOption } from '../Select'
+import ModelPicker from './ModelPicker'
 import ButtonTooltip from './buttonTooltip'
 import ParamPopoverChip, { CHIP_BASE_CLASS, CHIP_IDLE_CLASS } from './paramPopoverChip'
 
@@ -172,8 +174,11 @@ export default function InputParamsPanel({
   activeProfile,
   searchSupport,
   thinkingSupport,
-  modelOptions,
+  modelGroups,
+  activeProfileId,
+  canSwitchProfile,
   onModelChange,
+  onOpenSettings,
   isFalProvider,
   displaySize,
   qualityOptions,
@@ -226,8 +231,11 @@ export default function InputParamsPanel({
   activeProfile: ApiProfile
   searchSupport: ReturnType<typeof getImageSearchSupport>
   thinkingSupport: ReturnType<typeof getImageThinkingSupport>
-  modelOptions: Array<{ label: string; value: string }>
-  onModelChange: (model: string) => void
+  modelGroups: ApiProfileModelGroup[]
+  activeProfileId: string
+  canSwitchProfile: boolean
+  onModelChange: (profileId: string, model: string) => void
+  onOpenSettings: () => void
   isFalProvider: boolean
   displaySize: string
   qualityOptions: SelectOption[]
@@ -311,13 +319,13 @@ export default function InputParamsPanel({
   return (
     <div className="flex flex-1 flex-wrap items-center gap-2 min-w-0 text-xs">
       <div className="min-w-0 max-w-full max-sm:flex-auto">
-        <Select
+        <ModelPicker
           value={activeProfile.model}
-          onChange={(val) => onModelChange(String(val))}
-          options={modelOptions}
-          showValueTooltips
-          menuClassName="min-w-max"
-          className={CHIP_CLASS}
+          groups={modelGroups}
+          activeProfileId={activeProfileId}
+          canSwitchProfile={canSwitchProfile}
+          onChange={onModelChange}
+          onOpenSettings={onOpenSettings}
         />
       </div>
       {family && family !== 'seedream' && (
@@ -344,7 +352,7 @@ export default function InputParamsPanel({
             <Select
               value={modelParams.resolution ?? 'auto'}
               onChange={(value) => setParams({ resolution: String(value) })}
-              options={(family === 'grok' ? ['1K', '2K'] : ['512', '1K', '2K', '4K']).map((value) => ({
+              options={(family === 'grok' ? isFalProvider ? ['1K', '1.5K', '2K'] : ['1K', '2K'] : ['512', '1K', '2K', '4K']).map((value) => ({
                 label: value,
                 value,
                 disabledReason: modelOptionsForImage.resolutions.includes(value) ? undefined : '当前模型不支持此分辨率',
@@ -433,7 +441,7 @@ export default function InputParamsPanel({
           )}
         </>
       )}
-      {family !== 'seedream' && (
+      {(family !== 'seedream' || isFalProvider) && (
         <label
           className={`relative flex items-center max-sm:flex-auto sm:shrink-0 ${agentAutoImageCount ? CHIP_DISABLED_CLASS : `${CHIP_CLASS} cursor-text`}`}
           onMouseEnter={() => { showAgentNHint(); streamConcurrentHint.show() }}
@@ -667,11 +675,6 @@ export default function InputParamsPanel({
                   />
                 </div>
               </div>
-              {hasInputImages && params.output_format === 'svg' && (
-                <p className="text-[11px] leading-snug text-amber-600 dark:text-amber-400">
-                  SVG 只能用于文生图，有参考图时无法提交
-                </p>
-              )}
               {isGif && (
                 <>
                   <label className={ROW_CLASS}>
