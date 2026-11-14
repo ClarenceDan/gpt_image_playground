@@ -1,0 +1,1 @@
+[    9960ms] [ERROR] Blocked script execution in 'https://raw.githubusercontent.com/CookSleep/gpt_image_playground/v0.7.14/src/lib/imageModels.ts' because the document's frame is sandboxed and the 'allow-scripts' permission is not set. @ https://raw.githubusercontent.com/CookSleep/gpt_image_playground/v0.7.14/src/lib/imageModels.ts:0

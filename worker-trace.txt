@@ -1,0 +1,3627 @@
+FORKS
+FORKS
+FORKS
+FORKS
+FORKS
+FORKS
+FORKS
+FORKS
+RESET
+RESET
+RESET
+RESET
+STARTTESTS 1
+STARTTESTS 1
+RESET
+STARTTESTS 1
+STARTTESTS 1
+CLEARCTX
+CLEARCTX
+STARTTESTS 1
+CLEARCTX
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+CLEARCTX
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+INITSUITE runner=object
+FORKS
+INITSUITE runner=object
+IMPORT collect
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+IMPORT collect
+IMPORT collect
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+FORKS
+FORKS
+FORKS
+FORKS
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+RESET
+RESET
+RESET
+RESET
+STARTTESTS 1
+STARTTESTS 1
+RESET
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+STARTTESTS 1
+CLEARCTX
+STARTTESTS 1
+CLEARCTX
+INITSUITE runner=object
+STARTTESTS 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+CLEARCTX
+CLEARCTX
+INITSUITE runner=object
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+IMPORT collect
+INITSUITE runner=object
+INITSUITE runner=object
+IMPORT collect
+IMPORT collect
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 2
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+RESET
+STARTTESTS 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+COLLECTED 1
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+RESET
+STARTTESTS 1
+COLLECTED 2
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+RESET
+INITSUITE runner=object
+STARTTESTS 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+CLEARCTX
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+RESET
+INITSUITE runner=object
+STARTTESTS 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+CLEARCTX
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 2
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+COLLECTED 2
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 4
+COLLECTED 16
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 3
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+RESET
+COLLECTED 2
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+COLLECTED 1
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+IMPORT collect
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+COLLECTED 7
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+COLLECTED 24
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 4
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 2
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+FORKS
+FORKS
+RESET
+RESET
+STARTTESTS 1
+STARTTESTS 1
+RESET
+CLEARCTX
+STARTTESTS 1
+CLEARCTX
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+IMPORT collect
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 8
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 3
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 2
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+COLLECTED 1
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+FORKS
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 6
+RESET
+STARTTESTS 1
+FORKS
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 4
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 4
+FORKS
+FORKS
+RESET
+STARTTESTS 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+CLEARCTX
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+IMPORT collect
+FORKS
+FORKS
+RESET
+STARTTESTS 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+CLEARCTX
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+IMPORT collect
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+RESET
+STARTTESTS 1
+CLEARCTX
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 4
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+FORKS
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 6
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+FORKS
+COLLECTED 1
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+COLLECTED 3
+COLLECTED 1
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+RESET
+IMPORT collect
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+COLLECTED 1
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 2
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+RESET
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+STARTTESTS 1
+INITSUITE runner=object
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+COLLECTED 2
+FORKS
+FORKS
+FORKS
+RESET
+STARTTESTS 1
+RESET
+CLEARCTX
+STARTTESTS 1
+CLEARCTX
+RESET
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+STARTTESTS 1
+INITSUITE runner=object
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+IMPORT collect
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+RESET
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+STARTTESTS 1
+INITSUITE runner=object
+CLEARCTX
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+FORKS
+RESET
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+STARTTESTS 1
+INITSUITE runner=object
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+COLLECTED 3
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 6
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+FORKS
+FORKS
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+RESET
+STARTTESTS 1
+CLEARCTX
+RESET
+STARTTESTS 1
+RESET
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+CLEARCTX
+STARTTESTS 1
+INITSUITE runner=object
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+IMPORT collect
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+IMPORT collect
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 2
+EXEC URL /src/lib/size.test.ts
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+COLLECTED 1
+COLLECTED 2
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 3
+COLLECTED 4
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+COLLECTED 2
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+FORKS
+RESET
+RESET
+STARTTESTS 1
+STARTTESTS 1
+CLEARCTX
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+IMPORT collect
+INITSUITE runner=object
+COLLECTED 1
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+RESET
+STARTTESTS 1
+COLLECTED 1
+CLEARCTX
+COLLECTED 2
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+IMPORT collect
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 2
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+FORKS
+FORKS
+FORKS
+FORKS
+FORKS
+FORKS
+FORKS
+FORKS
+RESET
+STARTTESTS 1
+RESET
+RESET
+RESET
+RESET
+CLEARCTX
+STARTTESTS 1
+STARTTESTS 1
+STARTTESTS 1
+STARTTESTS 1
+CLEARCTX
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+CLEARCTX
+CLEARCTX
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+IMPORT collect
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+IMPORT collect
+INITSUITE runner=object
+IMPORT collect
+IMPORT collect
+FORKS
+FORKS
+FORKS
+FORKS
+FORKS
+FORKS
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+RESET
+RESET
+RESET
+STARTTESTS 1
+STARTTESTS 1
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+CLEARCTX
+CLEARCTX
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+IMPORT collect
+INITSUITE runner=object
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+IMPORT collect
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 2
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 16
+RESET
+RESET
+STARTTESTS 1
+STARTTESTS 1
+CLEARCTX
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+IMPORT collect
+IMPORT collect
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+IMPORT collect
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 2
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 2
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 2
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 24
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+RESET
+STARTTESTS 1
+CLEARCTX
+COLLECTED 2
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 4
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 3
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+FORKS
+COLLECTED 7
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+RESET
+INITSUITE runner=object
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 4
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 2
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 2
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+COLLECTED 3
+FORKS
+RESET
+RESET
+STARTTESTS 1
+STARTTESTS 1
+CLEARCTX
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+IMPORT collect
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+COLLECTED 1
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 8
+FORKS
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+COLLECTED 1
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+COLLECTED 1
+INITSUITE runner=object
+IMPORT collect
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+RESET
+STARTTESTS 1
+CLEARCTX
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 4
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 6
+FORKS
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+RESET
+STARTTESTS 1
+CLEARCTX
+COLLECTED 1
+RESET
+STARTTESTS 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+CLEARCTX
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+IMPORT collect
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+FORKS
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+RESET
+IMPORT collect
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+FORKS
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+COLLECTED 1
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+RESET
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+STARTTESTS 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+CLEARCTX
+INITSUITE runner=object
+RESET
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+STARTTESTS 1
+CLEARCTX
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+IMPORT collect
+COLLECTED 6
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+FORKS
+RESET
+RESET
+STARTTESTS 1
+STARTTESTS 1
+CLEARCTX
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+IMPORT collect
+IMPORT collect
+FORKS
+FORKS
+FORKS
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 4
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+RESET
+RESET
+RESET
+INITSUITE runner=object
+STARTTESTS 1
+STARTTESTS 1
+STARTTESTS 1
+IMPORT collect
+CLEARCTX
+CLEARCTX
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+IMPORT collect
+INITSUITE runner=object
+IMPORT collect
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 6
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+COLLECTED 4
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+COLLECTED 2
+COLLECTED 4
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 3
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+FORKS
+FORKS
+FORKS
+FORKS
+RESET
+RESET
+RESET
+STARTTESTS 1
+STARTTESTS 1
+STARTTESTS 1
+RESET
+CLEARCTX
+STARTTESTS 1
+CLEARCTX
+CLEARCTX
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+INITSUITE runner=object
+INITSUITE runner=object
+IMPORT collect
+IMPORT collect
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 2
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+FORKS
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+EXEC URL /src/lib/size.test.ts
+RESET
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+STARTTESTS 1
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+CLEARCTX
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+FORKS
+INITSUITE runner=object
+COLLECTED 2
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+COLLECTED 3
+COLLECTED 2
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 3
+RESET
+FORKS
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+COLLECTED 1
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+IMPORT collect
+COLLECTED 1
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+COLLECTED 2
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+IMPORT collect
+COLLECTED 1
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 2
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 2
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 16
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 16
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 16
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 16
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 16
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 16
+FORKS
+FORKS
+FORKS
+FORKS
+FORKS
+FORKS
+FORKS
+FORKS
+FORKS
+RESET
+RESET
+RESET
+RESET
+STARTTESTS 1
+STARTTESTS 1
+STARTTESTS 1
+STARTTESTS 1
+CLEARCTX
+CLEARCTX
+CLEARCTX
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+IMPORT collect
+INITSUITE runner=object
+INITSUITE runner=object
+IMPORT collect
+IMPORT collect
+IMPORT collect
+FORKS
+FORKS
+FORKS
+FORKS
+FORKS
+FORKS
+RESET
+STARTTESTS 1
+RESET
+CLEARCTX
+RESET
+RESET
+STARTTESTS 1
+STARTTESTS 1
+STARTTESTS 1
+RESET
+CLEARCTX
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+STARTTESTS 1
+CLEARCTX
+INITSUITE runner=object
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+IMPORT collect
+IMPORT collect
+IMPORT collect
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 2
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 16
+RESET
+RESET
+RESET
+STARTTESTS 1
+STARTTESTS 1
+RESET
+STARTTESTS 1
+CLEARCTX
+CLEARCTX
+CLEARCTX
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+RESET
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+STARTTESTS 1
+INITSUITE runner=object
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+IMPORT collect
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+IMPORT collect
+IMPORT collect
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+RESET
+RESET
+STARTTESTS 1
+STARTTESTS 1
+CLEARCTX
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 2
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 2
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 2
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+FORKS
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+RESET
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+STARTTESTS 1
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+CLEARCTX
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+IMPORT collect
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 24
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 2
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 4
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 3
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+COLLECTED 1
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+RESET
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+STARTTESTS 1
+INITSUITE runner=object
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+COLLECTED 7
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 4
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+FORKS
+FORKS
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 2
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 2
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+RESET
+STARTTESTS 1
+CLEARCTX
+COLLECTED 1
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 3
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+FORKS
+COLLECTED 1
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+COLLECTED 8
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+RESET
+STARTTESTS 1
+CLEARCTX
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+COLLECTED 6
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+IMPORT collect
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+FORKS
+INITSUITE runner=object
+COLLECTED 4
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 4
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+RESET
+RESET
+STARTTESTS 1
+STARTTESTS 1
+CLEARCTX
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+IMPORT collect
+IMPORT collect
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+RESET
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+STARTTESTS 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+CLEARCTX
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+COLLECTED 4
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+FORKS
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+COLLECTED 1
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 6
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+RESET
+STARTTESTS 1
+CLEARCTX
+FORKS
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+RESET
+STARTTESTS 1
+CLEARCTX
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+IMPORT collect
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+FORKS
+FORKS
+FORKS
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+RESET
+RESET
+STARTTESTS 1
+STARTTESTS 1
+CLEARCTX
+RESET
+RESET
+RESET
+CLEARCTX
+STARTTESTS 1
+STARTTESTS 1
+COLLECTED 6
+STARTTESTS 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+CLEARCTX
+CLEARCTX
+INITSUITE runner=object
+INITSUITE runner=object
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+IMPORT collect
+INITSUITE runner=object
+IMPORT collect
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+INITSUITE runner=object
+IMPORT collect
+IMPORT collect
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+EXEC URL /src/lib/size.test.ts
+COLLECTED 3
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 4
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 3
+COLLECTED 1
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 2
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+COLLECTED 2
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 3
+COLLECTED 2
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+FORKS
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+RESET
+RESET
+STARTTESTS 1
+STARTTESTS 1
+RESET
+CLEARCTX
+CLEARCTX
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+IMPORT collect
+INITSUITE runner=object
+INITSUITE runner=object
+IMPORT collect
+IMPORT collect
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+INITSUITE runner=object
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+COLLECTED 1
+INITSUITE runner=object
+FORKS
+COLLECTED 2
+COLLECTED 1
+COLLECTED 2
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 2
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
+COLLECTED 1
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+FORKS
+RESET
+STARTTESTS 1
+CLEARCTX
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+IMPORT collect
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 2
+SUITE object     at processTicksAndRejections (node:internal/process/task_queues:103:5)
+INITSUITE runner=object
+COLLECTED 1
